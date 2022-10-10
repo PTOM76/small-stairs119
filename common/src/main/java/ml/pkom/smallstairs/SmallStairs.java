@@ -48,29 +48,29 @@ public class SmallStairs {
         RegistryEvent<Block> YELLOW_WOOL = registry.registerBlock(id("small_stairs_yellow_wool"), () -> Blocks.YELLOW_WOOL_SMALL_STAIR);
         RegistryEvent<Block> QUARTZ_BLOCK = registry.registerBlock(id("small_stairs_quartz_block"), () -> Blocks.QUARTZ_BLOCK_SMALL_STAIR);
 
-        registry.registerItem(id("small_stairs_planks_oak"), () -> new BlockItem(OAK_PLANKS.supplier.get(), new Item.Settings().group(ItemGroup.BUILDING_BLOCKS)));
-        registry.registerItem(id("small_stairs_planks_spruce"), () -> new BlockItem(SPRUCE_PLANKS.supplier.get(), new Item.Settings().group(ItemGroup.BUILDING_BLOCKS)));
-        registry.registerItem(id("small_stairs_planks_birch"), () -> new BlockItem(BIRCH_PLANKS.supplier.get(), new Item.Settings().group(ItemGroup.BUILDING_BLOCKS)));
-        registry.registerItem(id("small_stairs_planks_jungle"), () -> new BlockItem(JUNGLE_PLANKS.supplier.get(), new Item.Settings().group(ItemGroup.BUILDING_BLOCKS)));
-        registry.registerItem(id("small_stairs_planks_acacia"), () -> new BlockItem(ACACIA_PLANKS.supplier.get(), new Item.Settings().group(ItemGroup.BUILDING_BLOCKS)));
-        registry.registerItem(id("small_stairs_planks_dark_oak"), () -> new BlockItem(DARK_OAK_PLANKS.supplier.get(), new Item.Settings().group(ItemGroup.BUILDING_BLOCKS)));
+        registry.registerItem(id("small_stairs_planks_oak"), () -> new BlockItem(OAK_PLANKS.getOrNull(), new Item.Settings().group(ItemGroup.BUILDING_BLOCKS)));
+        registry.registerItem(id("small_stairs_planks_spruce"), () -> new BlockItem(SPRUCE_PLANKS.getOrNull(), new Item.Settings().group(ItemGroup.BUILDING_BLOCKS)));
+        registry.registerItem(id("small_stairs_planks_birch"), () -> new BlockItem(BIRCH_PLANKS.getOrNull(), new Item.Settings().group(ItemGroup.BUILDING_BLOCKS)));
+        registry.registerItem(id("small_stairs_planks_jungle"), () -> new BlockItem(JUNGLE_PLANKS.getOrNull(), new Item.Settings().group(ItemGroup.BUILDING_BLOCKS)));
+        registry.registerItem(id("small_stairs_planks_acacia"), () -> new BlockItem(ACACIA_PLANKS.getOrNull(), new Item.Settings().group(ItemGroup.BUILDING_BLOCKS)));
+        registry.registerItem(id("small_stairs_planks_dark_oak"), () -> new BlockItem(DARK_OAK_PLANKS.getOrNull(), new Item.Settings().group(ItemGroup.BUILDING_BLOCKS)));
         if (Registry.BLOCK.getIds().contains(new Identifier("minecraft", "mangrove_planks"))) {
             RegistryEvent<Block> MANGROVE_PLANKS = registry.registerBlock(id("small_stairs_planks_mangrove"), () -> ml.pkom.smallstairs.v119.Blocks.MANGROVE_PLANKS_SMALL_STAIR);
-            registry.registerItem(id("small_stairs_planks_mangrove"), () -> new BlockItem(MANGROVE_PLANKS.supplier.get(), new Item.Settings().group(ItemGroup.BUILDING_BLOCKS)));
+            registry.registerItem(id("small_stairs_planks_mangrove"), () -> new BlockItem(MANGROVE_PLANKS.getOrNull(), new Item.Settings().group(ItemGroup.BUILDING_BLOCKS)));
         }
-        registry.registerItem(id("small_stairs_planks_crimson"), () -> new BlockItem(CRIMSON_PLANKS.supplier.get(), new Item.Settings().group(ItemGroup.BUILDING_BLOCKS)));
-        registry.registerItem(id("small_stairs_planks_warped"), () -> new BlockItem(WARPED_PLANKS.supplier.get(), new Item.Settings().group(ItemGroup.BUILDING_BLOCKS)));
-        registry.registerItem(id("small_stairs_cobblestone"), () -> new BlockItem(COBBLESTONE.supplier.get(), new Item.Settings().group(ItemGroup.BUILDING_BLOCKS)));
-        registry.registerItem(id("small_stairs_sandstone"), () -> new BlockItem(SANDSTONE.supplier.get(), new Item.Settings().group(ItemGroup.BUILDING_BLOCKS)));
-        registry.registerItem(id("small_stairs_red_sandstone"), () -> new BlockItem(RED_SANDSTONE.supplier.get(), new Item.Settings().group(ItemGroup.BUILDING_BLOCKS)));
-        registry.registerItem(id("small_stairs_brick"), () -> new BlockItem(BRICKS.supplier.get(), new Item.Settings().group(ItemGroup.BUILDING_BLOCKS)));
-        registry.registerItem(id("small_stairs_stonebrick"), () -> new BlockItem(STONE_BRICKS.supplier.get(), new Item.Settings().group(ItemGroup.BUILDING_BLOCKS)));
-        registry.registerItem(id("small_stairs_nether_brick"), () -> new BlockItem(NETHER_BRICKS.supplier.get(), new Item.Settings().group(ItemGroup.BUILDING_BLOCKS)));
-        registry.registerItem(id("small_stairs_red_nether_brick"), () -> new BlockItem(RED_NETHER_BRICKS.supplier.get(), new Item.Settings().group(ItemGroup.BUILDING_BLOCKS)));
-        registry.registerItem(id("small_stairs_stone"), () -> new BlockItem(STONE.supplier.get(), new Item.Settings().group(ItemGroup.BUILDING_BLOCKS)));
-        registry.registerItem(id("small_stairs_red_wool"), () -> new BlockItem(RED_WOOL.supplier.get(), new Item.Settings().group(ItemGroup.BUILDING_BLOCKS)));
-        registry.registerItem(id("small_stairs_yellow_wool"), () -> new BlockItem(YELLOW_WOOL.supplier.get(), new Item.Settings().group(ItemGroup.BUILDING_BLOCKS)));
-        registry.registerItem(id("small_stairs_quartz_block"), () -> new BlockItem(QUARTZ_BLOCK.supplier.get(), new Item.Settings().group(ItemGroup.BUILDING_BLOCKS)));
+        registry.registerItem(id("small_stairs_planks_crimson"), () -> new BlockItem(CRIMSON_PLANKS.getOrNull(), new Item.Settings().group(ItemGroup.BUILDING_BLOCKS)));
+        registry.registerItem(id("small_stairs_planks_warped"), () -> new BlockItem(WARPED_PLANKS.getOrNull(), new Item.Settings().group(ItemGroup.BUILDING_BLOCKS)));
+        registry.registerItem(id("small_stairs_cobblestone"), () -> new BlockItem(COBBLESTONE.getOrNull(), new Item.Settings().group(ItemGroup.BUILDING_BLOCKS)));
+        registry.registerItem(id("small_stairs_sandstone"), () -> new BlockItem(SANDSTONE.getOrNull(), new Item.Settings().group(ItemGroup.BUILDING_BLOCKS)));
+        registry.registerItem(id("small_stairs_red_sandstone"), () -> new BlockItem(RED_SANDSTONE.getOrNull(), new Item.Settings().group(ItemGroup.BUILDING_BLOCKS)));
+        registry.registerItem(id("small_stairs_brick"), () -> new BlockItem(BRICKS.getOrNull(), new Item.Settings().group(ItemGroup.BUILDING_BLOCKS)));
+        registry.registerItem(id("small_stairs_stonebrick"), () -> new BlockItem(STONE_BRICKS.getOrNull(), new Item.Settings().group(ItemGroup.BUILDING_BLOCKS)));
+        registry.registerItem(id("small_stairs_nether_brick"), () -> new BlockItem(NETHER_BRICKS.getOrNull(), new Item.Settings().group(ItemGroup.BUILDING_BLOCKS)));
+        registry.registerItem(id("small_stairs_red_nether_brick"), () -> new BlockItem(RED_NETHER_BRICKS.getOrNull(), new Item.Settings().group(ItemGroup.BUILDING_BLOCKS)));
+        registry.registerItem(id("small_stairs_stone"), () -> new BlockItem(STONE.getOrNull(), new Item.Settings().group(ItemGroup.BUILDING_BLOCKS)));
+        registry.registerItem(id("small_stairs_red_wool"), () -> new BlockItem(RED_WOOL.getOrNull(), new Item.Settings().group(ItemGroup.BUILDING_BLOCKS)));
+        registry.registerItem(id("small_stairs_yellow_wool"), () -> new BlockItem(YELLOW_WOOL.getOrNull(), new Item.Settings().group(ItemGroup.BUILDING_BLOCKS)));
+        registry.registerItem(id("small_stairs_quartz_block"), () -> new BlockItem(QUARTZ_BLOCK.getOrNull(), new Item.Settings().group(ItemGroup.BUILDING_BLOCKS)));
 
         registry.allRegister();
     }
