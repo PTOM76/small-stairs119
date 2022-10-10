@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "id": "smallstairs",
+  "version": "${version}",
+  "name": "Small Stairs",
+  "description": "The mod adds small stairs",
+  "authors": [
+    "Pitan"
+  ],
+  "contact": {
+    "website": "https://www.curseforge.com/minecraft/mc-mods/small-stairs119",
+    "repo": "https://github.com/PTOM76/small-stairs119",
+    "issues": "https://github.com/PTOM76/small-stairs119/issues"
+  },
+  "license": "MIT",
+  "icon": "assets/smallstairs/logo.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "ml.pkom.smallstairs.fabric.SmallStairsFabric"
+    ]
+  },
+  "mixins": [
+    "smallstairs.mixins.json",
+    "smallstairs-common.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": "*",
+    "minecraft": "*",
+    "mcpitanlibarch": "*"
+  }
+}
