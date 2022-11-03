@@ -27,6 +27,8 @@ dependencies {
     shadowCommon(project(path: ":common", configuration: "transformProductionFabric")) { transitive false }
 
     modApi "ml.pkom:mcpitanlibarch-fabric${rootProject.mcpitanlib_version}"
+
+    modImplementation "me.shedaniel:RoughlyEnoughItems-fabric:9.1.562"
 }
 
 processResources {

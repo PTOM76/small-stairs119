@@ -7,11 +7,11 @@
   ],
   "key": {
     "#": {
-      "item": "minecraft:spruce_planks"
+      "item": "minecraft:crimson_planks"
     }
   },
   "result": {
-    "item": "smallstairs:small_stairs_planks_spruce",
+    "item": "smallstairs:small_stairs_planks_crimson",
     "count": 6
   }
 }

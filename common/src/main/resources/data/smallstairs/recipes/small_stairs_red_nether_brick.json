@@ -7,11 +7,11 @@
   ],
   "key": {
     "#": {
-      "item": "minecraft:red_nether_brick"
+      "item": "minecraft:red_nether_bricks"
     }
   },
   "result": {
-    "item": "smallstairs:small_stairs_red_nether_bricks",
+    "item": "smallstairs:small_stairs_red_nether_brick",
     "count": 6
   }
 }
