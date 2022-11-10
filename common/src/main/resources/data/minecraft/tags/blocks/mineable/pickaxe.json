@@ -1,0 +1,14 @@
+{
+  "replace": false,
+  "values": [
+    "smallstairs:small_stairs_brick",
+    "smallstairs:small_stairs_cobblestone",
+    "smallstairs:small_stairs_stone",
+    "smallstairs:small_stairs_nether_brick",
+    "smallstairs:small_stairs_red_nether_brick",
+    "smallstairs:small_stairs_stonebrick",
+    "smallstairs:small_stairs_sandstone",
+    "smallstairs:small_stairs_red_sandstone",
+    "smallstairs:small_stairs_quartz_block"
+  ]
+}

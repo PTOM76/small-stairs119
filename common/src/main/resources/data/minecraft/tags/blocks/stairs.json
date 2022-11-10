@@ -1,0 +1,27 @@
+{
+  "replace": false,
+  "values": [
+    "smallstairs:small_stairs_brick",
+    "smallstairs:small_stairs_cobblestone",
+    "smallstairs:small_stairs_stone",
+    "smallstairs:small_stairs_nether_brick",
+    "smallstairs:small_stairs_red_nether_brick",
+    "smallstairs:small_stairs_stonebrick",
+    "smallstairs:small_stairs_sandstone",
+    "smallstairs:small_stairs_red_sandstone",
+    "smallstairs:small_stairs_quartz_block",
+
+    "smallstairs:small_stairs_planks_oak",
+    "smallstairs:small_stairs_planks_birch",
+    "smallstairs:small_stairs_planks_spruce",
+    "smallstairs:small_stairs_planks_jungle",
+    "smallstairs:small_stairs_planks_dark_oak",
+    "smallstairs:small_stairs_planks_acacia",
+    "smallstairs:small_stairs_planks_mangrove",
+    "smallstairs:small_stairs_planks_crimson",
+    "smallstairs:small_stairs_planks_warped",
+
+    "smallstairs:small_stairs_red_wool",
+    "smallstairs:small_stairs_yellow_wool"
+  ]
+}
