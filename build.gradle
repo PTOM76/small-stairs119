@@ -1,14 +1,20 @@
 plugins {
     id "architectury-plugin" version "3.4-SNAPSHOT"
     id "dev.architectury.loom" version "0.11.0-SNAPSHOT" apply false
+    id 'com.matthewprenger.cursegradle' version '1.+'
+    id "com.modrinth.minotaur" version "2.+"
 }
 
 architectury {
     minecraft = rootProject.minecraft_version
 }
 
+import com.modrinth.minotaur.dependencies.ModDependency
+
 subprojects {
     apply plugin: "dev.architectury.loom"
+    apply plugin: "com.modrinth.minotaur"
+    apply plugin: "com.matthewprenger.cursegradle"
 
     loom {
         silentMojangMappingsLicense()
@@ -28,8 +34,69 @@ subprojects {
 
         modApi "ml.pkom:mcpitanlibarch-common${rootProject.mcpitanlib_version}"
     }
-}
 
+    if (name in "fabric,forge".split(",")) {
+        var modLoader = name
+
+        if (System.getenv("CURSEFORGE_TOKEN") != null) {
+            curseforge {
+                apiKey = System.getenv("CURSEFORGE_TOKEN")
+                project {
+                    id = '687162'
+                    changelog = 'Fix lang'
+                    if (modLoader == "fabric") {
+                        releaseType = 'release'
+                        addGameVersion "Fabric"
+                    }
+                    if (modLoader == "forge") {
+                        releaseType = 'beta'
+                        addGameVersion "Forge"
+                    }
+                    addGameVersion '1.17'
+                    addGameVersion '1.17.1'
+                    addGameVersion '1.18'
+                    addGameVersion '1.18.1'
+                    addGameVersion '1.18.2'
+                    addGameVersion '1.19'
+                    addGameVersion '1.19.1'
+                    addGameVersion '1.19.2'
+                    relations {
+                        if (modLoader == "fabric") {
+                            requiredDependency "fabric-api"
+                        }
+                        requiredDependency 'mcpitanlibarch'
+                    }
+
+                    mainArtifact(tasks.remapJar)
+                }
+                options {
+                    forgeGradleIntegration = false
+                }
+            }
+
+        }
+
+        if (System.getenv("MODRINTH_TOKEN") != null) {
+            modrinth {
+                token = System.getenv("MODRINTH_TOKEN")
+                projectId = 'PKI5O2ED'
+                versionNumber = project.mod_version
+                uploadFile = tasks.remapJar
+                gameVersions = ['1.17', '1.17.1', '1.18', '1.18.1', '1.18.2', '1.19', '1.19.1', '1.19.2']
+                versionType = 'release'
+                changelog = 'Fix lang'
+                if (modLoader == "fabric") {
+                    dependencies.add(new ModDependency('P7dR8mSH', 'required')) // Fabric API
+                    loaders = ['fabric']
+                }
+                if (modLoader == "forge") {
+                    loaders = ['forge']
+                }
+                dependencies.add(new ModDependency('uNRoUnGT', 'required')) // MCPitanLibarch
+            }
+        }
+    }
+}
 allprojects {
     apply plugin: "java"
     apply plugin: "architectury-plugin"
