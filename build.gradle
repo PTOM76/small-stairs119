@@ -60,6 +60,7 @@ subprojects {
                     addGameVersion '1.19'
                     addGameVersion '1.19.1'
                     addGameVersion '1.19.2'
+                    addGameVersion '1.19.3'
                     relations {
                         if (modLoader == "fabric") {
                             requiredDependency "fabric-api"
@@ -80,19 +81,18 @@ subprojects {
             modrinth {
                 token = System.getenv("MODRINTH_TOKEN")
                 projectId = 'PKI5O2ED'
-                versionNumber = project.mod_version
-                uploadFile = tasks.remapJar
-                gameVersions = ['1.17', '1.17.1', '1.18', '1.18.1', '1.18.2', '1.19', '1.19.1', '1.19.2']
+                versionNumber = project.mod_version + "-" + modLoader
+                gameVersions = ['1.17', '1.17.1', '1.18', '1.18.1', '1.18.2', '1.19', '1.19.1', '1.19.2', '1.19.3']
                 versionType = 'release'
+                uploadFile = tasks.remapJar
                 changelog = 'Fix lang'
-                if (modLoader == "fabric") {
-                    dependencies.add(new ModDependency('P7dR8mSH', 'required')) // Fabric API
-                    loaders = ['fabric']
+                loaders = [modLoader]
+                dependencies {
+                    if (modLoader == "fabric") {
+                        required.project "P7dR8mSH" // Fabric API
+                    }
+                    required.project "uNRoUnGT" // MCPitanLibarch
                 }
-                if (modLoader == "forge") {
-                    loaders = ['forge']
-                }
-                dependencies.add(new ModDependency('uNRoUnGT', 'required')) // MCPitanLibarch
             }
         }
     }
