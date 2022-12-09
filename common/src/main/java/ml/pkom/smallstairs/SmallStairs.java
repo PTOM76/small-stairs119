@@ -4,6 +4,7 @@ import ml.pkom.mcpitanlibarch.api.event.registry.RegistryEvent;
 import ml.pkom.mcpitanlibarch.api.item.DefaultItemGroups;
 import ml.pkom.mcpitanlibarch.api.item.ExtendSettings;
 import ml.pkom.mcpitanlibarch.api.registry.ArchRegistry;
+import ml.pkom.mcpitanlibarch.api.util.BlockUtil;
 import net.minecraft.block.Block;
 import net.minecraft.item.BlockItem;
 import net.minecraft.util.Identifier;
@@ -54,7 +55,7 @@ public class SmallStairs {
         registry.registerItem(id("small_stairs_planks_jungle"), () -> new BlockItem(JUNGLE_PLANKS.getOrNull(), new ExtendSettings().addGroup(DefaultItemGroups.BUILDING_BLOCKS, id("small_stairs_planks_jungle")) ));
         registry.registerItem(id("small_stairs_planks_acacia"), () -> new BlockItem(ACACIA_PLANKS.getOrNull(), new ExtendSettings().addGroup(DefaultItemGroups.BUILDING_BLOCKS, id("small_stairs_planks_acacia")) ));
         registry.registerItem(id("small_stairs_planks_dark_oak"), () -> new BlockItem(DARK_OAK_PLANKS.getOrNull(), new ExtendSettings().addGroup(DefaultItemGroups.BUILDING_BLOCKS, id("small_stairs_planks_dark_oak")) ));
-        if (Registry.BLOCK.getIds().contains(new Identifier("minecraft", "mangrove_planks"))) {
+        if (BlockUtil.isExist(new Identifier("minecraft", "mangrove_planks"))) {
             RegistryEvent<Block> MANGROVE_PLANKS = registry.registerBlock(id("small_stairs_planks_mangrove"), () -> ml.pkom.smallstairs.v119.Blocks.MANGROVE_PLANKS_SMALL_STAIR);
             registry.registerItem(id("small_stairs_planks_mangrove"), () -> new BlockItem(MANGROVE_PLANKS.getOrNull(), new ExtendSettings().addGroup(DefaultItemGroups.BUILDING_BLOCKS, id("small_stairs_planks_mangrove")) ));
         }
