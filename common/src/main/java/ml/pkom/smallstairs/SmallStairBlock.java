@@ -1,5 +1,6 @@
 package ml.pkom.smallstairs;
 
+import ml.pkom.mcpitanlibarch.api.block.CompatibleBlockSettings;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.ShapeContext;
 import net.minecraft.block.StairsBlock;
@@ -13,8 +14,8 @@ import net.minecraft.world.BlockView;
 
 public class SmallStairBlock extends StairsBlock {
 
-    public SmallStairBlock(BlockState baseBlockState, Settings settings) {
-        super(baseBlockState, settings);
+    public SmallStairBlock(BlockState baseBlockState, CompatibleBlockSettings settings) {
+        super(baseBlockState, settings.build());
     }
 
     private static final double base1 = 1.0 / 3.0;

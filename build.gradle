@@ -1,6 +1,6 @@
 plugins {
     id "architectury-plugin" version "3.4-SNAPSHOT"
-    id "dev.architectury.loom" version "0.11.0-SNAPSHOT" apply false
+    id "dev.architectury.loom" version "1.1-SNAPSHOT" apply false
     id 'com.matthewprenger.cursegradle' version '1.+'
     id "com.modrinth.minotaur" version "2.+"
 }
@@ -30,7 +30,7 @@ subprojects {
         // The following line declares the mojmap mappings, you may use other mappings as well
         // mappings loom.officialMojangMappings()
         // The following line declares the yarn mappings you may select this one as well.
-        mappings "net.fabricmc:yarn:1.19+build.4:v2"
+        mappings "net.fabricmc:yarn:${rootProject.yarn_mappings}:v2"
 
         modApi "ml.pkom:mcpitanlibarch-common${rootProject.mcpitanlib_version}"
     }
@@ -43,7 +43,7 @@ subprojects {
                 apiKey = System.getenv("CURSEFORGE_TOKEN")
                 project {
                     id = '687162'
-                    changelog = 'Fix lang'
+                    changelog = ''
                     if (modLoader == "fabric") {
                         releaseType = 'release'
                         addGameVersion "Fabric"
@@ -61,6 +61,8 @@ subprojects {
                     addGameVersion '1.19.1'
                     addGameVersion '1.19.2'
                     addGameVersion '1.19.3'
+                    addGameVersion '1.19.4'
+                    addGameVersion '1.20'
                     relations {
                         if (modLoader == "fabric") {
                             requiredDependency "fabric-api"
@@ -82,10 +84,10 @@ subprojects {
                 token = System.getenv("MODRINTH_TOKEN")
                 projectId = 'PKI5O2ED'
                 versionNumber = project.mod_version + "-" + modLoader
-                gameVersions = ['1.17', '1.17.1', '1.18', '1.18.1', '1.18.2', '1.19', '1.19.1', '1.19.2', '1.19.3']
+                gameVersions = ['1.17', '1.17.1', '1.18', '1.18.1', '1.18.2', '1.19', '1.19.1', '1.19.2', '1.19.3', '1.19.4', '1.20']
                 versionType = 'release'
                 uploadFile = tasks.remapJar
-                changelog = 'Fix lang'
+                changelog = ''
                 loaders = [modLoader]
                 dependencies {
                     if (modLoader == "fabric") {

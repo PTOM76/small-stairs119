@@ -8,18 +8,10 @@ import ml.pkom.mcpitanlibarch.api.util.BlockUtil;
 import net.minecraft.block.Block;
 import net.minecraft.item.BlockItem;
 import net.minecraft.util.Identifier;
-import org.apache.logging.log4j.Level;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 public class SmallStairs {
     public static final String MOD_ID = "smallstairs";
     public static final String MOD_NAME = "SmallStairs";
-
-    public static Logger LOGGER = LogManager.getLogger();
-    public static void log(Level level, String message){
-        LOGGER.log(level, "[" + MOD_NAME + "] " + message);
-    }
 
     public static Identifier id(String id) {
         return new Identifier(MOD_ID, id);
@@ -47,6 +39,7 @@ public class SmallStairs {
         RegistryEvent<Block> RED_WOOL = registry.registerBlock(id("small_stairs_red_wool"), () -> Blocks.RED_WOOL_SMALL_STAIR);
         RegistryEvent<Block> YELLOW_WOOL = registry.registerBlock(id("small_stairs_yellow_wool"), () -> Blocks.YELLOW_WOOL_SMALL_STAIR);
         RegistryEvent<Block> QUARTZ_BLOCK = registry.registerBlock(id("small_stairs_quartz_block"), () -> Blocks.QUARTZ_BLOCK_SMALL_STAIR);
+        RegistryEvent<Block> PURPUR_BLOCK = registry.registerBlock(id("small_stairs_purpur_block"), () -> Blocks.PURPUR_BLOCK_SMALL_STAIR);
 
         registry.registerItem(id("small_stairs_planks_oak"), () -> new BlockItem(OAK_PLANKS.getOrNull(), new ExtendSettings().addGroup(DefaultItemGroups.BUILDING_BLOCKS, id("small_stairs_planks_oak")) ));
         registry.registerItem(id("small_stairs_planks_spruce"), () -> new BlockItem(SPRUCE_PLANKS.getOrNull(), new ExtendSettings().addGroup(DefaultItemGroups.BUILDING_BLOCKS, id("small_stairs_planks_spruce")) ));
@@ -71,6 +64,7 @@ public class SmallStairs {
         registry.registerItem(id("small_stairs_red_wool"), () -> new BlockItem(RED_WOOL.getOrNull(), new ExtendSettings().addGroup(DefaultItemGroups.BUILDING_BLOCKS, id("small_stairs_red_wool")) ));
         registry.registerItem(id("small_stairs_yellow_wool"), () -> new BlockItem(YELLOW_WOOL.getOrNull(), new ExtendSettings().addGroup(DefaultItemGroups.BUILDING_BLOCKS, id("small_stairs_yellow_wool")) ));
         registry.registerItem(id("small_stairs_quartz_block"), () -> new BlockItem(QUARTZ_BLOCK.getOrNull(), new ExtendSettings().addGroup(DefaultItemGroups.BUILDING_BLOCKS, id("small_stairs_quartz_block")) ));
+        registry.registerItem(id("small_stairs_purpur_block"), () -> new BlockItem(PURPUR_BLOCK.getOrNull(), new ExtendSettings().addGroup(DefaultItemGroups.BUILDING_BLOCKS, id("small_stairs_purpur_block")) ));
 
         registry.allRegister();
     }
