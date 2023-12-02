@@ -1,4 +1,4 @@
-package ml.pkom.smallstairs;
+package net.pitan76.smallstairs;
 
 import ml.pkom.mcpitanlibarch.api.block.CompatibleBlockSettings;
 import net.minecraft.block.Block;

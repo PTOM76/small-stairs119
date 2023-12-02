@@ -17,7 +17,7 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "ml.pkom.smallstairs.fabric.SmallStairsFabric"
+      "net.pitan76.smallstairs.fabric.SmallStairsFabric"
     ]
   },
   "mixins": [

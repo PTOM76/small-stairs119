@@ -1,7 +1,7 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "ml.pkom.smallstairs.mixin.forge",
+  "package": "net.pitan76.smallstairs.mixin.forge",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
   ],

@@ -1,7 +1,7 @@
-package ml.pkom.smallstairs.forge;
+package net.pitan76.smallstairs.forge;
 
 import dev.architectury.platform.forge.EventBuses;
-import ml.pkom.smallstairs.SmallStairs;
+import net.pitan76.smallstairs.SmallStairs;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 

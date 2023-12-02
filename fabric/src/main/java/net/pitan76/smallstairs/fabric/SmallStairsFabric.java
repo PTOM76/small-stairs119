@@ -1,6 +1,6 @@
-package ml.pkom.smallstairs.fabric;
+package net.pitan76.smallstairs.fabric;
 
-import ml.pkom.smallstairs.SmallStairs;
+import net.pitan76.smallstairs.SmallStairs;
 import net.fabricmc.api.ModInitializer;
 
 public class SmallStairsFabric implements ModInitializer {
