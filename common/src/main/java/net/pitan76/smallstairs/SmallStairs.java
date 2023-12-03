@@ -1,9 +1,11 @@
 package net.pitan76.smallstairs;
 
+import ml.pkom.mcpitanlibarch.api.block.CompatibleBlockSettings;
 import ml.pkom.mcpitanlibarch.api.event.registry.RegistryEvent;
 import ml.pkom.mcpitanlibarch.api.item.CompatibleItemSettings;
 import ml.pkom.mcpitanlibarch.api.item.DefaultItemGroups;
 import ml.pkom.mcpitanlibarch.api.registry.ArchRegistry;
+import ml.pkom.mcpitanlibarch.api.tag.TagKey;
 import ml.pkom.mcpitanlibarch.api.util.BlockUtil;
 import ml.pkom.mcpitanlibarch.api.util.ItemUtil;
 import net.minecraft.block.Block;
@@ -47,10 +49,15 @@ public class SmallStairs {
         registry.registerItem(id("small_stairs_planks_jungle"), () -> ItemUtil.ofBlock(JUNGLE_PLANKS.getOrNull(), new CompatibleItemSettings().addGroup(DefaultItemGroups.BUILDING_BLOCKS, id("small_stairs_planks_jungle")) ));
         registry.registerItem(id("small_stairs_planks_acacia"), () -> ItemUtil.ofBlock(ACACIA_PLANKS.getOrNull(), new CompatibleItemSettings().addGroup(DefaultItemGroups.BUILDING_BLOCKS, id("small_stairs_planks_acacia")) ));
         registry.registerItem(id("small_stairs_planks_dark_oak"), () -> ItemUtil.ofBlock(DARK_OAK_PLANKS.getOrNull(), new CompatibleItemSettings().addGroup(DefaultItemGroups.BUILDING_BLOCKS, id("small_stairs_planks_dark_oak")) ));
+
         if (BlockUtil.isExist(new Identifier("minecraft", "mangrove_planks"))) {
             RegistryEvent<Block> MANGROVE_PLANKS = registry.registerBlock(id("small_stairs_planks_mangrove"), () -> net.pitan76.smallstairs.v119.Blocks.MANGROVE_PLANKS_SMALL_STAIR);
             registry.registerItem(id("small_stairs_planks_mangrove"), () -> ItemUtil.ofBlock(MANGROVE_PLANKS.getOrNull(), new CompatibleItemSettings().addGroup(DefaultItemGroups.BUILDING_BLOCKS, id("small_stairs_planks_mangrove")) ));
+        } else {
+            RegistryEvent<Block> MANGROVE_PLANKS = registry.registerBlock(id("small_stairs_planks_mangrove"), () -> new SmallStairBlock(Blocks.STONE_SMALL_STAIR.getDefaultState(), CompatibleBlockSettings.copy(Blocks.STONE_SMALL_STAIR)));
+            registry.registerItem(id("small_stairs_planks_mangrove"), () -> ItemUtil.ofBlock(MANGROVE_PLANKS.getOrNull(), new CompatibleItemSettings()) );
         }
+
         registry.registerItem(id("small_stairs_planks_crimson"), () -> ItemUtil.ofBlock(CRIMSON_PLANKS.getOrNull(), new CompatibleItemSettings().addGroup(DefaultItemGroups.BUILDING_BLOCKS, id("small_stairs_planks_crimson")) ));
         registry.registerItem(id("small_stairs_planks_warped"), () -> ItemUtil.ofBlock(WARPED_PLANKS.getOrNull(), new CompatibleItemSettings().addGroup(DefaultItemGroups.BUILDING_BLOCKS, id("small_stairs_planks_warped")) ));
         registry.registerItem(id("small_stairs_cobblestone"), () -> ItemUtil.ofBlock(COBBLESTONE.getOrNull(), new CompatibleItemSettings().addGroup(DefaultItemGroups.BUILDING_BLOCKS, id("small_stairs_cobblestone")) ));
@@ -67,5 +74,6 @@ public class SmallStairs {
         registry.registerItem(id("small_stairs_purpur_block"), () -> ItemUtil.ofBlock(PURPUR_BLOCK.getOrNull(), new CompatibleItemSettings().addGroup(DefaultItemGroups.BUILDING_BLOCKS, id("small_stairs_purpur_block")) ));
 
         registry.allRegister();
+
     }
 }
