@@ -90,6 +90,9 @@ subprojects {
                 projectId = 'PKI5O2ED'
                 versionNumber = project.mod_version + "-" + modLoader
                 gameVersions = ['1.18', '1.18.1', '1.18.2', '1.19', '1.19.1', '1.19.2', '1.20', '1.20.1', '1.20.3', '1.20.4']
+                if (modLoader == "neoForge") {
+                    gameVersions = ['1.20.3', '1.20.4']
+                }
                 versionType = 'release'
                 uploadFile = tasks.remapJar
                 changelog = ''
