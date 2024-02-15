@@ -1,9 +1,9 @@
 package net.pitan76.smallstairs.forge;
 
 import dev.architectury.platform.forge.EventBuses;
-import net.pitan76.smallstairs.SmallStairs;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.pitan76.smallstairs.SmallStairs;
 
 @Mod(SmallStairs.MOD_ID)
 public class SmallStairsForge {

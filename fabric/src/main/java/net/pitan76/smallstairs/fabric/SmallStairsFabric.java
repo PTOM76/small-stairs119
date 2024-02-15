@@ -1,7 +1,7 @@
 package net.pitan76.smallstairs.fabric;
 
-import net.pitan76.smallstairs.SmallStairs;
 import net.fabricmc.api.ModInitializer;
+import net.pitan76.smallstairs.SmallStairs;
 
 public class SmallStairsFabric implements ModInitializer {
     @Override

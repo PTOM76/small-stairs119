@@ -1,0 +1,36 @@
+modLoader = "javafml"
+loaderVersion = "[0,)"
+license = "MIT"
+issueTrackerURL = "https://github.com/PTOM76/small-stairs119/issues"
+
+[[mods]]
+modId = "smallstairs"
+version = "${version}"
+displayName = "Small Stairs"
+displayURL = "https://www.curseforge.com/minecraft/mc-mods/small-stairs119"
+logoFile = "logo.png"
+authors = "Pitan"
+description = '''
+The mod adds small stairs
+'''
+
+[[dependencies.smallstairs]]
+modId = "neoforge"
+mandatory = true
+versionRange = "[0,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.smallstairs]]
+modId = "minecraft"
+mandatory = true
+versionRange = "[0,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.smallstairs]]
+modId = "mcpitanlib"
+mandatory = true
+versionRange = "[2.0.0,)"
+ordering = "BEFORE"
+side = "BOTH"

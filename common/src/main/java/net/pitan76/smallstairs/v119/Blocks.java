@@ -1,8 +1,8 @@
 package net.pitan76.smallstairs.v119;
 
-import ml.pkom.mcpitanlibarch.api.block.CompatibleBlockSettings;
-import net.pitan76.smallstairs.SmallStairBlock;
 import net.minecraft.block.Block;
+import net.pitan76.mcpitanlib.api.block.CompatibleBlockSettings;
+import net.pitan76.smallstairs.SmallStairBlock;
 
 import static net.minecraft.block.Blocks.MANGROVE_PLANKS;
 

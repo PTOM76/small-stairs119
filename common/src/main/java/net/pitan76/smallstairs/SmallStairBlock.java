@@ -1,6 +1,5 @@
 package net.pitan76.smallstairs;
 
-import ml.pkom.mcpitanlibarch.api.block.CompatibleBlockSettings;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.ShapeContext;
@@ -12,6 +11,7 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
+import net.pitan76.mcpitanlib.api.block.CompatibleBlockSettings;
 
 public class SmallStairBlock extends StairsBlock {
 
