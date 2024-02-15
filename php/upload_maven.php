@@ -1,5 +1,9 @@
 <?php
-define('VERSION', '1.1.0');
+$gradle_properties = file_get_contents('../gradle.properties');
+preg_match('/mod_version=(.*)/', $gradle_properties, $matches);
+$matches[1] = str_replace(["\r", "\n"], '', $matches[1]);
+
+define('VERSION', $matches[1]);
 
 define('GROUP_ID', 'net.pitan76');
 define('ARTIFACT_ID', 'smallstairs');
@@ -8,12 +12,14 @@ define('DIRS', array(
 	'common' => 'common/build/',
 	'fabric' => 'fabric/build/',
 	'forge' => 'forge/build/',
+	'neoforge' => 'neoforge/build/',
 ));
 
 define('PLATFORM_FILE_MARK', array(
 	'common' => '',
 	'fabric' => '-fabric',
 	'forge' => '-forge',
+	'neoforge' => '-neoforge',
 ));
 
 foreach (DIRS as $type => $dir) {
