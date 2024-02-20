@@ -20,6 +20,9 @@
       "net.pitan76.smallstairs.fabric.SmallStairsFabric"
     ]
   },
+  "provides": [
+    "smallstairs-impl"
+  ],
   "mixins": [
     "smallstairs.mixins.json",
     "smallstairs-common.mixins.json"
