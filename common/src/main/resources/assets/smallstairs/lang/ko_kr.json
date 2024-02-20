@@ -1,0 +1,23 @@
+{
+  "block.smallstairs.small_stairs_cobblestone": "돌 블록 계단",
+  "block.smallstairs.small_stairs_planks_oak": "참나무 목재 계단",
+  "block.smallstairs.small_stairs_planks_spruce": "전나무 목재 계단",
+  "block.smallstairs.small_stairs_planks_birch": "자작나무 목재 계단",
+  "block.smallstairs.small_stairs_planks_jungle": "정글 나무 목재 계단",
+  "block.smallstairs.small_stairs_planks_acacia": "아카시아 나무 목재 계단",
+  "block.smallstairs.small_stairs_planks_dark_oak": "짙은 참나무 목재 계단",
+  "block.smallstairs.small_stairs_planks_mangrove": "맹그로브 나무 목재 계단",
+  "block.smallstairs.small_stairs_planks_crimson": "진홍 나무 목재 계단",
+  "block.smallstairs.small_stairs_planks_warped": "뒤틀린 나무 목재 계단",
+  "block.smallstairs.small_stairs_sandstone": "사암 계단",
+  "block.smallstairs.small_stairs_red_sandstone": "붉은 사암 계단",
+  "block.smallstairs.small_stairs_brick": "벽돌 계단",
+  "block.smallstairs.small_stairs_stonebrick": "돌 벽돌 계단",
+  "block.smallstairs.small_stairs_nether_brick": "네더 벽돌 계단",
+  "block.smallstairs.small_stairs_red_nether_brick": "붉은 네더 벽돌 계단",
+  "block.smallstairs.small_stairs_stone": "돌 계단",
+  "block.smallstairs.small_stairs_red_wool": "붉은 양털 계단",
+  "block.smallstairs.small_stairs_yellow_wool": "노란 양털 계단",
+  "block.smallstairs.small_stairs_quartz_block": "석영 블록 계단",
+  "block.smallstairs.small_stairs_purpur_block": "퍼퍼 블록 계단"
+}
