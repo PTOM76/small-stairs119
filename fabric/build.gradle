@@ -28,7 +28,7 @@ dependencies {
 
     modApi "net.pitan76:mcpitanlib-fabric${rootProject.mcpitanlib_version}"
 
-    modImplementation "me.shedaniel:RoughlyEnoughItems-fabric:13.0.678"
+    //modImplementation "me.shedaniel:RoughlyEnoughItems-fabric:13.0.678"
     include "net.pitan76:mcpitanlib_checker-fabric:${rootProject.mcpitanlib_checker_version}"
 }
 
