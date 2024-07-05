@@ -7,7 +7,9 @@ import net.pitan76.mcpitanlib.api.item.CompatibleItemSettings;
 import net.pitan76.mcpitanlib.api.item.DefaultItemGroups;
 import net.pitan76.mcpitanlib.api.registry.CompatRegistry;
 import net.pitan76.mcpitanlib.api.registry.result.RegistryResult;
+import net.pitan76.mcpitanlib.api.util.BlockStateUtil;
 import net.pitan76.mcpitanlib.api.util.BlockUtil;
+import net.pitan76.mcpitanlib.api.util.IdentifierUtil;
 import net.pitan76.mcpitanlib.api.util.ItemUtil;
 
 public class SmallStairs {
@@ -15,7 +17,7 @@ public class SmallStairs {
     public static final String MOD_NAME = "SmallStairs";
 
     public static Identifier id(String id) {
-        return new Identifier(MOD_ID, id);
+        return IdentifierUtil.id(MOD_ID, id);
     }
 
     public static CompatRegistry registry = CompatRegistry.createRegistry(MOD_ID);
@@ -49,11 +51,11 @@ public class SmallStairs {
         registry.registerItem(id("small_stairs_planks_acacia"), () -> ItemUtil.ofBlock(ACACIA_PLANKS.getOrNull(), new CompatibleItemSettings().addGroup(() -> DefaultItemGroups.BUILDING_BLOCKS, id("small_stairs_planks_acacia")) ));
         registry.registerItem(id("small_stairs_planks_dark_oak"), () -> ItemUtil.ofBlock(DARK_OAK_PLANKS.getOrNull(), new CompatibleItemSettings().addGroup(() -> DefaultItemGroups.BUILDING_BLOCKS, id("small_stairs_planks_dark_oak")) ));
 
-        if (BlockUtil.isExist(new Identifier("minecraft", "mangrove_planks"))) {
+        if (BlockUtil.isExist(IdentifierUtil.id("minecraft", "mangrove_planks"))) {
             RegistryResult<Block> MANGROVE_PLANKS = registry.registerBlock(id("small_stairs_planks_mangrove"), () -> net.pitan76.smallstairs.v119.Blocks.MANGROVE_PLANKS_SMALL_STAIR);
             registry.registerItem(id("small_stairs_planks_mangrove"), () -> ItemUtil.ofBlock(MANGROVE_PLANKS.getOrNull(), new CompatibleItemSettings().addGroup(() -> DefaultItemGroups.BUILDING_BLOCKS, id("small_stairs_planks_mangrove")) ));
         } else {
-            RegistryResult<Block> MANGROVE_PLANKS = registry.registerBlock(id("small_stairs_planks_mangrove"), () -> new SmallStairBlock(Blocks.STONE_SMALL_STAIR.getDefaultState(), CompatibleBlockSettings.copy(Blocks.STONE_SMALL_STAIR)));
+            RegistryResult<Block> MANGROVE_PLANKS = registry.registerBlock(id("small_stairs_planks_mangrove"), () -> new SmallStairBlock(BlockStateUtil.getDefaultState(Blocks.STONE_SMALL_STAIR), CompatibleBlockSettings.copy(Blocks.STONE_SMALL_STAIR)));
             registry.registerItem(id("small_stairs_planks_mangrove"), () -> ItemUtil.ofBlock(MANGROVE_PLANKS.getOrNull(), new CompatibleItemSettings()) );
         }
 

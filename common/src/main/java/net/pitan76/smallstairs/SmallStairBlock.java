@@ -12,21 +12,31 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.pitan76.mcpitanlib.api.block.CompatibleBlockSettings;
+import net.pitan76.mcpitanlib.api.block.ExtendBlockProvider;
+import net.pitan76.mcpitanlib.api.event.block.OutlineShapeEvent;
+import net.pitan76.mcpitanlib.api.util.BlockStateUtil;
 
-public class SmallStairBlock extends StairsBlock {
+public class SmallStairBlock extends StairsBlock implements ExtendBlockProvider {
 
     public SmallStairBlock(BlockState baseBlockState, CompatibleBlockSettings settings) {
         super(baseBlockState, settings.build());
     }
 
     public SmallStairBlock(Block block, CompatibleBlockSettings settings) {
-        super(block.getDefaultState(), settings.build());
+        super(BlockStateUtil.getDefaultState(block), settings.build());
     }
 
     private static final double base1 = 1.0 / 3.0;
     private static final double base2 = 2.0 / 3.0;
 
+    @Override
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
+        return getOutlineShape(new OutlineShapeEvent(state, world, pos, context), new Options());
+    }
+
+    public VoxelShape getOutlineShape(OutlineShapeEvent e, Options options) {
+        BlockState state = e.state;
+
         VoxelShape voxelShape = VoxelShapes.cuboid(0, 0, 0, 1, 1, 1);;
 
         Direction facing = state.get(FACING);
