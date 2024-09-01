@@ -7,6 +7,6 @@ import net.pitan76.smallstairs.SmallStairs;
 @Mod(SmallStairs.MOD_ID)
 public class SmallStairsNeoForge {
     public SmallStairsNeoForge(ModContainer modContainer) {
-        SmallStairs.init();
+        new SmallStairs();
     }
 }

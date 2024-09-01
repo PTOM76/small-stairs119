@@ -10,6 +10,6 @@ public class SmallStairsForge {
     public SmallStairsForge() {
         // Submit our event bus to let architectury register our content on the right time
         EventBuses.registerModEventBus(SmallStairs.MOD_ID, FMLJavaModLoadingContext.get().getModEventBus());
-        SmallStairs.init();
+        new SmallStairs();
     }
 }

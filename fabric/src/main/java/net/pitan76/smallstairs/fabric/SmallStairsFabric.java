@@ -6,6 +6,6 @@ import net.pitan76.smallstairs.SmallStairs;
 public class SmallStairsFabric implements ModInitializer {
     @Override
     public void onInitialize() {
-        SmallStairs.init();
+        new SmallStairs();
     }
 }
