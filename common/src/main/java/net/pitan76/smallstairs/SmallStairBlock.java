@@ -2,15 +2,19 @@ package net.pitan76.smallstairs;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.StairsBlock;
 import net.minecraft.block.enums.BlockHalf;
 import net.minecraft.block.enums.StairShape;
+import net.minecraft.state.property.Properties;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.shape.VoxelShape;
 import net.pitan76.mcpitanlib.api.block.CompatStairsBlock;
 import net.pitan76.mcpitanlib.api.block.CompatibleBlockSettings;
 import net.pitan76.mcpitanlib.api.event.block.OutlineShapeEvent;
 import net.pitan76.mcpitanlib.api.util.BlockStateUtil;
+import net.pitan76.mcpitanlib.api.util.PropertyUtil;
 import net.pitan76.mcpitanlib.api.util.VoxelShapeUtil;
+import net.pitan76.mcpitanlib.core.serialization.CompatMapCodec;
 
 public class SmallStairBlock extends CompatStairsBlock {
 
@@ -22,6 +26,12 @@ public class SmallStairBlock extends CompatStairsBlock {
         this(BlockStateUtil.getDefaultState(block), settings);
     }
 
+    // Todo: Implement getCompatCodec
+    @Override
+    public CompatMapCodec<? extends StairsBlock> getCompatCodec() {
+        return super.getCompatCodec();
+    }
+
     private static final double base1 = 1.0 / 3.0;
     private static final double base2 = 2.0 / 3.0;
 
@@ -29,8 +39,9 @@ public class SmallStairBlock extends CompatStairsBlock {
     public VoxelShape getOutlineShape(OutlineShapeEvent e) {
         VoxelShape voxelShape = VoxelShapeUtil.cuboid(0, 0, 0, 1, 1, 1);;
 
-        Direction facing = e.getProperty(FACING);
-        BlockHalf half = e.getProperty(HALF);
+        Direction facing = e.getProperty(PropertyUtil.facing());
+        BlockHalf half = e.getProperty(Properties.BLOCK_HALF);
+
         double sy1 = half == BlockHalf.BOTTOM ? 0 : base2;
         double ey1 = half == BlockHalf.BOTTOM ? base1 : 1;
         double sy2 = base1;
