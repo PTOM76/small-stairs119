@@ -39,7 +39,7 @@ public class SmallStairBlock extends CompatStairsBlock {
     public VoxelShape getOutlineShape(OutlineShapeEvent e) {
         VoxelShape voxelShape = VoxelShapeUtil.cuboid(0, 0, 0, 1, 1, 1);;
 
-        Direction facing = e.getProperty(PropertyUtil.facing());
+        Direction facing = e.getProperty(Properties.HORIZONTAL_FACING);
         BlockHalf half = e.getProperty(Properties.BLOCK_HALF);
 
         double sy1 = half == BlockHalf.BOTTOM ? 0 : base2;
