@@ -5,14 +5,12 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.StairsBlock;
 import net.minecraft.block.enums.BlockHalf;
 import net.minecraft.block.enums.StairShape;
-import net.minecraft.state.property.Properties;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.shape.VoxelShape;
 import net.pitan76.mcpitanlib.api.block.CompatStairsBlock;
 import net.pitan76.mcpitanlib.api.block.CompatibleBlockSettings;
 import net.pitan76.mcpitanlib.api.event.block.OutlineShapeEvent;
 import net.pitan76.mcpitanlib.api.util.BlockStateUtil;
-import net.pitan76.mcpitanlib.api.util.PropertyUtil;
 import net.pitan76.mcpitanlib.api.util.VoxelShapeUtil;
 import net.pitan76.mcpitanlib.core.serialization.CompatMapCodec;
 
@@ -39,15 +37,15 @@ public class SmallStairBlock extends CompatStairsBlock {
     public VoxelShape getOutlineShape(OutlineShapeEvent e) {
         VoxelShape voxelShape = VoxelShapeUtil.cuboid(0, 0, 0, 1, 1, 1);;
 
-        Direction facing = e.getProperty(Properties.HORIZONTAL_FACING);
-        BlockHalf half = e.getProperty(Properties.BLOCK_HALF);
+        Direction facing = e.getProperty(StairsBlock.FACING);
+        BlockHalf half = e.getProperty(StairsBlock.HALF);
 
         double sy1 = half == BlockHalf.BOTTOM ? 0 : base2;
         double ey1 = half == BlockHalf.BOTTOM ? base1 : 1;
         double sy2 = base1;
         double ey2 = base2;
 
-        StairShape stairShape = e.getProperty(SHAPE);
+        StairShape stairShape = e.getProperty(StairsBlock.SHAPE);
 
         if (facing == Direction.NORTH) {
             if (stairShape == StairShape.STRAIGHT) {
