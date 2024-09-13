@@ -45,7 +45,7 @@ public class SmallStairs extends CommonModInitializer {
         registry.registerItem(compatId("small_stairs_planks_acacia"), () -> ItemUtil.ofBlock(ACACIA_PLANKS.getOrNull(), CompatibleItemSettings.of().addGroup(() -> DefaultItemGroups.BUILDING_BLOCKS, compatId("small_stairs_planks_acacia")) ));
         registry.registerItem(compatId("small_stairs_planks_dark_oak"), () -> ItemUtil.ofBlock(DARK_OAK_PLANKS.getOrNull(), CompatibleItemSettings.of().addGroup(() -> DefaultItemGroups.BUILDING_BLOCKS, compatId("small_stairs_planks_dark_oak")) ));
 
-        if (BlockUtil.isExist(IdentifierUtil.id("minecraft", "mangrove_planks"))) {
+        if (BlockUtil.isExist(CompatIdentifier.of("minecraft", "mangrove_planks"))) {
             RegistryResult<Block> MANGROVE_PLANKS = registry.registerBlock(compatId("small_stairs_planks_mangrove"), () -> net.pitan76.smallstairs.v119.Blocks.MANGROVE_PLANKS_SMALL_STAIR);
             registry.registerItem(compatId("small_stairs_planks_mangrove"), () -> ItemUtil.ofBlock(MANGROVE_PLANKS.getOrNull(), CompatibleItemSettings.of().addGroup(() -> DefaultItemGroups.BUILDING_BLOCKS, compatId("small_stairs_planks_mangrove")) ));
         } else {

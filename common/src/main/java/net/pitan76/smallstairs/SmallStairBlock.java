@@ -24,10 +24,11 @@ public class SmallStairBlock extends CompatStairsBlock {
         this(BlockStateUtil.getDefaultState(block), settings);
     }
 
-    // Todo: Implement getCompatCodec
+    public static final CompatMapCodec<SmallStairBlock> CODEC = CompatMapCodec.createCodecOfCompatStairsBlock(SmallStairBlock::new);
+
     @Override
     public CompatMapCodec<? extends StairsBlock> getCompatCodec() {
-        return super.getCompatCodec();
+        return CODEC;
     }
 
     private static final double base1 = 1.0 / 3.0;
@@ -37,15 +38,15 @@ public class SmallStairBlock extends CompatStairsBlock {
     public VoxelShape getOutlineShape(OutlineShapeEvent e) {
         VoxelShape voxelShape = VoxelShapeUtil.cuboid(0, 0, 0, 1, 1, 1);;
 
-        Direction facing = e.getProperty(StairsBlock.FACING);
-        BlockHalf half = e.getProperty(StairsBlock.HALF);
+        Direction facing = e.getProperty(FACING);
+        BlockHalf half = e.getProperty(HALF);
 
         double sy1 = half == BlockHalf.BOTTOM ? 0 : base2;
         double ey1 = half == BlockHalf.BOTTOM ? base1 : 1;
         double sy2 = base1;
         double ey2 = base2;
 
-        StairShape stairShape = e.getProperty(StairsBlock.SHAPE);
+        StairShape stairShape = e.getProperty(SHAPE);
 
         if (facing == Direction.NORTH) {
             if (stairShape == StairShape.STRAIGHT) {
