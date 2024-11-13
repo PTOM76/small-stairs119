@@ -2,11 +2,12 @@ package net.pitan76.smallstairs;
 
 import net.minecraft.block.Block;
 import net.pitan76.mcpitanlib.api.CommonModInitializer;
-import net.pitan76.mcpitanlib.api.block.CompatibleBlockSettings;
-import net.pitan76.mcpitanlib.api.item.CompatibleItemSettings;
+import net.pitan76.mcpitanlib.api.block.v2.CompatibleBlockSettings;
+import net.pitan76.mcpitanlib.api.item.v2.CompatibleItemSettings;
 import net.pitan76.mcpitanlib.api.item.DefaultItemGroups;
 import net.pitan76.mcpitanlib.api.registry.result.RegistryResult;
 import net.pitan76.mcpitanlib.api.util.*;
+import net.pitan76.mcpitanlib.api.util.item.ItemUtil;
 
 public class SmallStairs extends CommonModInitializer {
     public static final String MOD_ID = "smallstairs";
@@ -38,35 +39,39 @@ public class SmallStairs extends CommonModInitializer {
         RegistryResult<Block> QUARTZ_BLOCK = registry.registerBlock(compatId("small_stairs_quartz_block"), () -> Blocks.QUARTZ_BLOCK_SMALL_STAIR);
         RegistryResult<Block> PURPUR_BLOCK = registry.registerBlock(compatId("small_stairs_purpur_block"), () -> Blocks.PURPUR_BLOCK_SMALL_STAIR);
 
-        registry.registerItem(compatId("small_stairs_planks_oak"), () -> ItemUtil.ofBlock(OAK_PLANKS.getOrNull(), CompatibleItemSettings.of().addGroup(DefaultItemGroups.BUILDING_BLOCKS, compatId("small_stairs_planks_oak")) ));
-        registry.registerItem(compatId("small_stairs_planks_spruce"), () -> ItemUtil.ofBlock(SPRUCE_PLANKS.getOrNull(), CompatibleItemSettings.of().addGroup(DefaultItemGroups.BUILDING_BLOCKS, compatId("small_stairs_planks_spruce")) ));
-        registry.registerItem(compatId("small_stairs_planks_birch"), () -> ItemUtil.ofBlock(BIRCH_PLANKS.getOrNull(), CompatibleItemSettings.of().addGroup(DefaultItemGroups.BUILDING_BLOCKS, compatId("small_stairs_planks_birch")) ));
-        registry.registerItem(compatId("small_stairs_planks_jungle"), () -> ItemUtil.ofBlock(JUNGLE_PLANKS.getOrNull(), CompatibleItemSettings.of().addGroup(DefaultItemGroups.BUILDING_BLOCKS, compatId("small_stairs_planks_jungle")) ));
-        registry.registerItem(compatId("small_stairs_planks_acacia"), () -> ItemUtil.ofBlock(ACACIA_PLANKS.getOrNull(), CompatibleItemSettings.of().addGroup(DefaultItemGroups.BUILDING_BLOCKS, compatId("small_stairs_planks_acacia")) ));
-        registry.registerItem(compatId("small_stairs_planks_dark_oak"), () -> ItemUtil.ofBlock(DARK_OAK_PLANKS.getOrNull(), CompatibleItemSettings.of().addGroup(DefaultItemGroups.BUILDING_BLOCKS, compatId("small_stairs_planks_dark_oak")) ));
+        registry.registerItem(compatId("small_stairs_planks_oak"), () -> ItemUtil.create(OAK_PLANKS.getOrNull(), CompatibleItemSettings.of().addGroup(DefaultItemGroups.BUILDING_BLOCKS, compatId("small_stairs_planks_oak")) ));
+        registry.registerItem(compatId("small_stairs_planks_spruce"), () -> ItemUtil.create(SPRUCE_PLANKS.getOrNull(), CompatibleItemSettings.of().addGroup(DefaultItemGroups.BUILDING_BLOCKS, compatId("small_stairs_planks_spruce")) ));
+        registry.registerItem(compatId("small_stairs_planks_birch"), () -> ItemUtil.create(BIRCH_PLANKS.getOrNull(), CompatibleItemSettings.of().addGroup(DefaultItemGroups.BUILDING_BLOCKS, compatId("small_stairs_planks_birch")) ));
+        registry.registerItem(compatId("small_stairs_planks_jungle"), () -> ItemUtil.create(JUNGLE_PLANKS.getOrNull(), CompatibleItemSettings.of().addGroup(DefaultItemGroups.BUILDING_BLOCKS, compatId("small_stairs_planks_jungle")) ));
+        registry.registerItem(compatId("small_stairs_planks_acacia"), () -> ItemUtil.create(ACACIA_PLANKS.getOrNull(), CompatibleItemSettings.of().addGroup(DefaultItemGroups.BUILDING_BLOCKS, compatId("small_stairs_planks_acacia")) ));
+        registry.registerItem(compatId("small_stairs_planks_dark_oak"), () -> ItemUtil.create(DARK_OAK_PLANKS.getOrNull(), CompatibleItemSettings.of().addGroup(DefaultItemGroups.BUILDING_BLOCKS, compatId("small_stairs_planks_dark_oak")) ));
 
         if (BlockUtil.isExist(CompatIdentifier.of("minecraft", "mangrove_planks"))) {
             RegistryResult<Block> MANGROVE_PLANKS = registry.registerBlock(compatId("small_stairs_planks_mangrove"), () -> net.pitan76.smallstairs.v119.Blocks.MANGROVE_PLANKS_SMALL_STAIR);
-            registry.registerItem(compatId("small_stairs_planks_mangrove"), () -> ItemUtil.ofBlock(MANGROVE_PLANKS.getOrNull(), CompatibleItemSettings.of().addGroup(DefaultItemGroups.BUILDING_BLOCKS, compatId("small_stairs_planks_mangrove")) ));
+            registry.registerItem(compatId("small_stairs_planks_mangrove"), () -> ItemUtil.create(MANGROVE_PLANKS.getOrNull(), CompatibleItemSettings.of().addGroup(DefaultItemGroups.BUILDING_BLOCKS, compatId("small_stairs_planks_mangrove")) ));
         } else {
             RegistryResult<Block> MANGROVE_PLANKS = registry.registerBlock(compatId("small_stairs_planks_mangrove"), () -> new SmallStairBlock(BlockStateUtil.getDefaultState(Blocks.STONE_SMALL_STAIR), CompatibleBlockSettings.copy(Blocks.STONE_SMALL_STAIR)));
-            registry.registerItem(compatId("small_stairs_planks_mangrove"), () -> ItemUtil.ofBlock(MANGROVE_PLANKS.getOrNull(), CompatibleItemSettings.of()) );
+            registry.registerItem(compatId("small_stairs_planks_mangrove"), () -> ItemUtil.create(MANGROVE_PLANKS.getOrNull(), CompatibleItemSettings.of()) );
         }
 
-        registry.registerItem(compatId("small_stairs_planks_crimson"), () -> ItemUtil.ofBlock(CRIMSON_PLANKS.getOrNull(), CompatibleItemSettings.of().addGroup(DefaultItemGroups.BUILDING_BLOCKS, compatId("small_stairs_planks_crimson")) ));
-        registry.registerItem(compatId("small_stairs_planks_warped"), () -> ItemUtil.ofBlock(WARPED_PLANKS.getOrNull(), CompatibleItemSettings.of().addGroup(DefaultItemGroups.BUILDING_BLOCKS, compatId("small_stairs_planks_warped")) ));
-        registry.registerItem(compatId("small_stairs_cobblestone"), () -> ItemUtil.ofBlock(COBBLESTONE.getOrNull(), CompatibleItemSettings.of().addGroup(DefaultItemGroups.BUILDING_BLOCKS, compatId("small_stairs_cobblestone")) ));
-        registry.registerItem(compatId("small_stairs_sandstone"), () -> ItemUtil.ofBlock(SANDSTONE.getOrNull(), CompatibleItemSettings.of().addGroup(DefaultItemGroups.BUILDING_BLOCKS, compatId("small_stairs_sandstone")) ));
-        registry.registerItem(compatId("small_stairs_red_sandstone"), () -> ItemUtil.ofBlock(RED_SANDSTONE.getOrNull(), CompatibleItemSettings.of().addGroup(DefaultItemGroups.BUILDING_BLOCKS, compatId("small_stairs_red_sandstone")) ));
-        registry.registerItem(compatId("small_stairs_brick"), () -> ItemUtil.ofBlock(BRICKS.getOrNull(), CompatibleItemSettings.of().addGroup(DefaultItemGroups.BUILDING_BLOCKS, compatId("small_stairs_brick")) ));
-        registry.registerItem(compatId("small_stairs_stonebrick"), () -> ItemUtil.ofBlock(STONE_BRICKS.getOrNull(), CompatibleItemSettings.of().addGroup(DefaultItemGroups.BUILDING_BLOCKS, compatId("small_stairs_stonebrick")) ));
-        registry.registerItem(compatId("small_stairs_nether_brick"), () -> ItemUtil.ofBlock(NETHER_BRICKS.getOrNull(), CompatibleItemSettings.of().addGroup(DefaultItemGroups.BUILDING_BLOCKS, compatId("small_stairs_nether_brick")) ));
-        registry.registerItem(compatId("small_stairs_red_nether_brick"), () -> ItemUtil.ofBlock(RED_NETHER_BRICKS.getOrNull(), CompatibleItemSettings.of().addGroup(DefaultItemGroups.BUILDING_BLOCKS, compatId("small_stairs_red_nether_brick")) ));
-        registry.registerItem(compatId("small_stairs_stone"), () -> ItemUtil.ofBlock(STONE.getOrNull(), CompatibleItemSettings.of().addGroup(DefaultItemGroups.BUILDING_BLOCKS, compatId("small_stairs_stone")) ));
-        registry.registerItem(compatId("small_stairs_red_wool"), () -> ItemUtil.ofBlock(RED_WOOL.getOrNull(), CompatibleItemSettings.of().addGroup(DefaultItemGroups.BUILDING_BLOCKS, compatId("small_stairs_red_wool")) ));
-        registry.registerItem(compatId("small_stairs_yellow_wool"), () -> ItemUtil.ofBlock(YELLOW_WOOL.getOrNull(), CompatibleItemSettings.of().addGroup(DefaultItemGroups.BUILDING_BLOCKS, compatId("small_stairs_yellow_wool")) ));
-        registry.registerItem(compatId("small_stairs_quartz_block"), () -> ItemUtil.ofBlock(QUARTZ_BLOCK.getOrNull(), CompatibleItemSettings.of().addGroup(DefaultItemGroups.BUILDING_BLOCKS, compatId("small_stairs_quartz_block")) ));
-        registry.registerItem(compatId("small_stairs_purpur_block"), () -> ItemUtil.ofBlock(PURPUR_BLOCK.getOrNull(), CompatibleItemSettings.of().addGroup(DefaultItemGroups.BUILDING_BLOCKS, compatId("small_stairs_purpur_block")) ));
+        registry.registerItem(compatId("small_stairs_planks_crimson"), () -> ItemUtil.create(CRIMSON_PLANKS.getOrNull(), CompatibleItemSettings.of().addGroup(DefaultItemGroups.BUILDING_BLOCKS, compatId("small_stairs_planks_crimson")) ));
+        registry.registerItem(compatId("small_stairs_planks_warped"), () -> ItemUtil.create(WARPED_PLANKS.getOrNull(), CompatibleItemSettings.of().addGroup(DefaultItemGroups.BUILDING_BLOCKS, compatId("small_stairs_planks_warped")) ));
+        registry.registerItem(compatId("small_stairs_cobblestone"), () -> ItemUtil.create(COBBLESTONE.getOrNull(), CompatibleItemSettings.of().addGroup(DefaultItemGroups.BUILDING_BLOCKS, compatId("small_stairs_cobblestone")) ));
+        registry.registerItem(compatId("small_stairs_sandstone"), () -> ItemUtil.create(SANDSTONE.getOrNull(), CompatibleItemSettings.of().addGroup(DefaultItemGroups.BUILDING_BLOCKS, compatId("small_stairs_sandstone")) ));
+        registry.registerItem(compatId("small_stairs_red_sandstone"), () -> ItemUtil.create(RED_SANDSTONE.getOrNull(), CompatibleItemSettings.of().addGroup(DefaultItemGroups.BUILDING_BLOCKS, compatId("small_stairs_red_sandstone")) ));
+        registry.registerItem(compatId("small_stairs_brick"), () -> ItemUtil.create(BRICKS.getOrNull(), CompatibleItemSettings.of().addGroup(DefaultItemGroups.BUILDING_BLOCKS, compatId("small_stairs_brick")) ));
+        registry.registerItem(compatId("small_stairs_stonebrick"), () -> ItemUtil.create(STONE_BRICKS.getOrNull(), CompatibleItemSettings.of().addGroup(DefaultItemGroups.BUILDING_BLOCKS, compatId("small_stairs_stonebrick")) ));
+        registry.registerItem(compatId("small_stairs_nether_brick"), () -> ItemUtil.create(NETHER_BRICKS.getOrNull(), CompatibleItemSettings.of().addGroup(DefaultItemGroups.BUILDING_BLOCKS, compatId("small_stairs_nether_brick")) ));
+        registry.registerItem(compatId("small_stairs_red_nether_brick"), () -> ItemUtil.create(RED_NETHER_BRICKS.getOrNull(), CompatibleItemSettings.of().addGroup(DefaultItemGroups.BUILDING_BLOCKS, compatId("small_stairs_red_nether_brick")) ));
+        registry.registerItem(compatId("small_stairs_stone"), () -> ItemUtil.create(STONE.getOrNull(), CompatibleItemSettings.of().addGroup(DefaultItemGroups.BUILDING_BLOCKS, compatId("small_stairs_stone")) ));
+        registry.registerItem(compatId("small_stairs_red_wool"), () -> ItemUtil.create(RED_WOOL.getOrNull(), CompatibleItemSettings.of().addGroup(DefaultItemGroups.BUILDING_BLOCKS, compatId("small_stairs_red_wool")) ));
+        registry.registerItem(compatId("small_stairs_yellow_wool"), () -> ItemUtil.create(YELLOW_WOOL.getOrNull(), CompatibleItemSettings.of().addGroup(DefaultItemGroups.BUILDING_BLOCKS, compatId("small_stairs_yellow_wool")) ));
+        registry.registerItem(compatId("small_stairs_quartz_block"), () -> ItemUtil.create(QUARTZ_BLOCK.getOrNull(), CompatibleItemSettings.of().addGroup(DefaultItemGroups.BUILDING_BLOCKS, compatId("small_stairs_quartz_block")) ));
+        registry.registerItem(compatId("small_stairs_purpur_block"), () -> ItemUtil.create(PURPUR_BLOCK.getOrNull(), CompatibleItemSettings.of().addGroup(DefaultItemGroups.BUILDING_BLOCKS, compatId("small_stairs_purpur_block")) ));
+    }
+
+    public static CompatIdentifier id(String path) {
+        return CompatIdentifier.of(MOD_ID, path);
     }
 
     @Override

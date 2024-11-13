@@ -8,7 +8,7 @@ import net.minecraft.block.enums.StairShape;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.shape.VoxelShape;
 import net.pitan76.mcpitanlib.api.block.CompatStairsBlock;
-import net.pitan76.mcpitanlib.api.block.CompatibleBlockSettings;
+import net.pitan76.mcpitanlib.api.block.v2.CompatibleBlockSettings;
 import net.pitan76.mcpitanlib.api.event.block.OutlineShapeEvent;
 import net.pitan76.mcpitanlib.api.util.BlockStateUtil;
 import net.pitan76.mcpitanlib.api.util.VoxelShapeUtil;
