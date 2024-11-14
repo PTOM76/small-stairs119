@@ -13,6 +13,7 @@ import net.pitan76.mcpitanlib.api.event.block.OutlineShapeEvent;
 import net.pitan76.mcpitanlib.api.util.BlockStateUtil;
 import net.pitan76.mcpitanlib.api.util.VoxelShapeUtil;
 import net.pitan76.mcpitanlib.core.serialization.CompatMapCodec;
+import net.pitan76.mcpitanlib.core.serialization.codecs.CompatBlockMapCodecUtil;
 
 public class SmallStairBlock extends CompatStairsBlock {
 
@@ -24,7 +25,7 @@ public class SmallStairBlock extends CompatStairsBlock {
         this(BlockStateUtil.getDefaultState(block), settings);
     }
 
-    public static final CompatMapCodec<SmallStairBlock> CODEC = CompatMapCodec.createCodecOfCompatStairsBlock(SmallStairBlock::new);
+    public static final CompatMapCodec<SmallStairBlock> CODEC = CompatBlockMapCodecUtil.createCodecOfStairsBlock(SmallStairBlock::new);
 
     @Override
     public CompatMapCodec<? extends StairsBlock> getCompatCodec() {
@@ -38,7 +39,7 @@ public class SmallStairBlock extends CompatStairsBlock {
     public VoxelShape getOutlineShape(OutlineShapeEvent e) {
         VoxelShape voxelShape = VoxelShapeUtil.cuboid(0, 0, 0, 1, 1, 1);;
 
-        Direction facing = e.getProperty(FACING);
+        Direction facing = e.get(FACING);
         BlockHalf half = e.getProperty(HALF);
 
         double sy1 = half == BlockHalf.BOTTOM ? 0 : base2;
