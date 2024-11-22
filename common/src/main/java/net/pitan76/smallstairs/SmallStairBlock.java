@@ -1,11 +1,9 @@
 package net.pitan76.smallstairs;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
 import net.minecraft.block.StairsBlock;
 import net.minecraft.block.enums.BlockHalf;
 import net.minecraft.block.enums.StairShape;
-import net.minecraft.util.math.Direction;
 import net.minecraft.util.shape.VoxelShape;
 import net.pitan76.mcpitanlib.api.block.CompatStairsBlock;
 import net.pitan76.mcpitanlib.api.block.v2.CompatibleBlockSettings;
@@ -14,10 +12,12 @@ import net.pitan76.mcpitanlib.api.util.BlockStateUtil;
 import net.pitan76.mcpitanlib.api.util.VoxelShapeUtil;
 import net.pitan76.mcpitanlib.core.serialization.CompatMapCodec;
 import net.pitan76.mcpitanlib.core.serialization.codecs.CompatBlockMapCodecUtil;
+import net.pitan76.mcpitanlib.midohra.block.BlockState;
+import net.pitan76.mcpitanlib.midohra.util.math.Direction;
 
 public class SmallStairBlock extends CompatStairsBlock {
 
-    public SmallStairBlock(BlockState baseBlockState, CompatibleBlockSettings settings) {
+    public SmallStairBlock(net.minecraft.block.BlockState baseBlockState, CompatibleBlockSettings settings) {
         super(baseBlockState, settings);
     }
 
@@ -37,17 +37,22 @@ public class SmallStairBlock extends CompatStairsBlock {
 
     @Override
     public VoxelShape getOutlineShape(OutlineShapeEvent e) {
-        VoxelShape voxelShape = VoxelShapeUtil.cuboid(0, 0, 0, 1, 1, 1);;
+        BlockState state = BlockState.of(e.state);
 
-        Direction facing = e.get(FACING);
-        BlockHalf half = e.getProperty(HALF);
+        Direction facing = state.get(FACING);
+        BlockHalf half = state.get(HALF);
+        StairShape stairShape = state.get(SHAPE);
+
+        return getShape(stairShape, facing, half);
+    }
+
+    public static VoxelShape getShape(StairShape stairShape, Direction facing, BlockHalf half) {
+        VoxelShape voxelShape = VoxelShapeUtil.cuboid(0, 0, 0, 1, 1, 1);
 
         double sy1 = half == BlockHalf.BOTTOM ? 0 : base2;
         double ey1 = half == BlockHalf.BOTTOM ? base1 : 1;
         double sy2 = base1;
         double ey2 = base2;
-
-        StairShape stairShape = e.getProperty(SHAPE);
 
         if (facing == Direction.NORTH) {
             if (stairShape == StairShape.STRAIGHT) {

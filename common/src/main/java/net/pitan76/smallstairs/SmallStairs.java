@@ -6,7 +6,6 @@ import net.pitan76.mcpitanlib.api.block.v2.CompatibleBlockSettings;
 import net.pitan76.mcpitanlib.api.item.v2.CompatibleItemSettings;
 import net.pitan76.mcpitanlib.api.item.DefaultItemGroups;
 import net.pitan76.mcpitanlib.api.registry.result.RegistryResult;
-import net.pitan76.mcpitanlib.api.util.BlockStateUtil;
 import net.pitan76.mcpitanlib.api.util.CompatIdentifier;
 import net.pitan76.mcpitanlib.api.util.item.ItemUtil;
 import net.pitan76.mcpitanlib.api.util.block.BlockUtil;
@@ -52,7 +51,7 @@ public class SmallStairs extends CommonModInitializer {
             RegistryResult<Block> MANGROVE_PLANKS = registry.registerBlock(_id("small_stairs_planks_mangrove"), () -> net.pitan76.smallstairs.v119.Blocks.MANGROVE_PLANKS_SMALL_STAIR);
             registry.registerItem(_id("small_stairs_planks_mangrove"), () -> ItemUtil.create(MANGROVE_PLANKS.getOrNull(), CompatibleItemSettings.of(_id("small_stairs_planks_mangrove")).addGroup(DefaultItemGroups.BUILDING_BLOCKS) ));
         } else {
-            RegistryResult<Block> MANGROVE_PLANKS = registry.registerBlock(_id("small_stairs_planks_mangrove"), () -> new SmallStairBlock(BlockStateUtil.getDefaultState(Blocks.STONE_SMALL_STAIR), CompatibleBlockSettings.copy(_id("small_stairs_planks_mangrove"), Blocks.STONE_SMALL_STAIR)));
+            RegistryResult<Block> MANGROVE_PLANKS = registry.registerBlock(_id("small_stairs_planks_mangrove"), () -> new SmallStairBlock(Blocks.STONE_SMALL_STAIR, CompatibleBlockSettings.copy(_id("small_stairs_planks_mangrove"), Blocks.STONE_SMALL_STAIR)));
             registry.registerItem(_id("small_stairs_planks_mangrove"), () -> ItemUtil.create(MANGROVE_PLANKS.getOrNull(), CompatibleItemSettings.of(_id("small_stairs_planks_mangrove"))) );
         }
 
