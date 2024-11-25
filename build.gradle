@@ -71,6 +71,8 @@ subprojects {
                     if (modLoader != "forge") {
                         addGameVersion '1.21'
                         addGameVersion '1.21.1'
+                        addGameVersion '1.21.2'
+                        addGameVersion '1.21.3'
                     }
 
                     relations {
@@ -100,7 +102,7 @@ subprojects {
                 }
 
                 if (modLoader != "forge") {
-                    gameVersions.addAll(['1.21', '1.21.1'])
+                    gameVersions.addAll(['1.21', '1.21.1', '1.21.2', '1.21.3'])
                 }
 
                 versionType = 'release'
