@@ -6,8 +6,8 @@ import net.minecraft.block.enums.BlockHalf;
 import net.minecraft.block.enums.StairShape;
 import net.minecraft.util.shape.VoxelShape;
 import net.pitan76.mcpitanlib.api.block.CompatStairsBlock;
+import net.pitan76.mcpitanlib.api.block.args.v2.OutlineShapeEvent;
 import net.pitan76.mcpitanlib.api.block.v2.CompatibleBlockSettings;
-import net.pitan76.mcpitanlib.api.event.block.OutlineShapeEvent;
 import net.pitan76.mcpitanlib.api.util.BlockStateUtil;
 import net.pitan76.mcpitanlib.api.util.VoxelShapeUtil;
 import net.pitan76.mcpitanlib.core.serialization.CompatMapCodec;
@@ -35,9 +35,22 @@ public class SmallStairBlock extends CompatStairsBlock {
     private static final double base1 = 1.0 / 3.0;
     private static final double base2 = 2.0 / 3.0;
 
+    // TODO: Remove this method
+    @Deprecated
     @Override
-    public VoxelShape getOutlineShape(OutlineShapeEvent e) {
+    public VoxelShape getOutlineShape(net.pitan76.mcpitanlib.api.event.block.OutlineShapeEvent e) {
         BlockState state = BlockState.of(e.state);
+
+        Direction facing = state.get(FACING);
+        BlockHalf half = state.get(HALF);
+        StairShape stairShape = state.get(SHAPE);
+
+        return getShape(stairShape, facing, half);
+    }
+
+    @Override
+    public VoxelShape getOutlineShape(OutlineShapeEvent e, Options options) {
+        BlockState state = e.state;
 
         Direction facing = state.get(FACING);
         BlockHalf half = state.get(HALF);
