@@ -1,7 +1,6 @@
 package net.pitan76.smallstairs;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.StairsBlock;
 import net.minecraft.block.enums.BlockHalf;
 import net.minecraft.block.enums.StairShape;
 import net.minecraft.util.shape.VoxelShape;
@@ -36,7 +35,7 @@ public class SmallStairBlock extends CompatStairsBlock {
     }
 
     @Override
-    public CompatMapCodec<? extends StairsBlock> getCompatCodec() {
+    public CompatMapCodec<? extends CompatStairsBlock> getCompatCodec() {
         return CODEC;
     }
 
