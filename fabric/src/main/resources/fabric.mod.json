@@ -23,13 +23,9 @@
   "provides": [
     "smallstairs-impl"
   ],
-  "mixins": [
-    "smallstairs.mixins.json",
-    "smallstairs-common.mixins.json"
-  ],
   "depends": {
     "fabricloader": "*",
     "minecraft": "*",
-    "mcpitanlib": ">2.0.0"
+    "mcpitanlib": ">3.0.0"
   }
 }
