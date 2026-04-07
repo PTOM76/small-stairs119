@@ -1,50 +1,64 @@
 package net.pitan76.smallstairs;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.enums.BlockHalf;
-import net.minecraft.block.enums.StairShape;
-import net.pitan76.mcpitanlib.api.block.CompatibleMaterial;
-import net.pitan76.mcpitanlib.api.block.v2.BlockSettingsBuilder;
-import net.pitan76.mcpitanlib.api.block.v2.CompatStairsBlock;
-import net.pitan76.mcpitanlib.api.block.v2.CompatibleBlockSettings;
-import net.pitan76.mcpitanlib.midohra.block.BlockState;
-import net.pitan76.mcpitanlib.midohra.easybuilder.BlockBuilder;
-import net.pitan76.mcpitanlib.midohra.util.math.Direction;
-import net.pitan76.mcpitanlib.midohra.util.shape.VoxelShape;
+import net.pitan76.mcpitanlib.api.util.CompatIdentifier;
+import net.pitan76.mcpitanlib.api.util.block.BlockUtil;
+import net.pitan76.mcpitanlib.core.datafixer.Pair;
+import net.pitan76.mcpitanlib.midohra.block.BlockWrapper;
+import net.pitan76.mcpitanlib.midohra.block.SupplierBlockWrapper;
+import net.pitan76.mcpitanlib.midohra.item.SupplierItemWrapper;
 
-import static net.pitan76.smallstairs.SmallStairDefines.getShape;
+import static net.pitan76.smallstairs.SmallStairs.registry;
 import static net.pitan76.smallstairs.SmallStairs._id;
+import static net.pitan76.mcpitanlib.midohra.block.Blocks.*;
 
 public class Blocks {
-    public static BlockBuilder SMALL_STAIR_BUILDER = BlockBuilder.of(new BlockSettingsBuilder())
-            .onOutlineShape(e -> {
-        BlockState state = e.state;
+    public static Pair<SupplierBlockWrapper, SupplierItemWrapper> OAK_PLANKS_SMALL_STAIR;
+    public static Pair<SupplierBlockWrapper, SupplierItemWrapper> SPRUCE_PLANKS_SMALL_STAIR;
+    public static Pair<SupplierBlockWrapper, SupplierItemWrapper> BIRCH_PLANKS_SMALL_STAIR;
+    public static Pair<SupplierBlockWrapper, SupplierItemWrapper> JUNGLE_PLANKS_SMALL_STAIR;
+    public static Pair<SupplierBlockWrapper, SupplierItemWrapper> ACACIA_PLANKS_SMALL_STAIR;
+    public static Pair<SupplierBlockWrapper, SupplierItemWrapper> DARK_OAK_PLANKS_SMALL_STAIR;
+    public static Pair<SupplierBlockWrapper, SupplierItemWrapper> MANGROVE_PLANKS_SMALL_STAIR;
+    public static Pair<SupplierBlockWrapper, SupplierItemWrapper> CRIMSON_PLANKS_SMALL_STAIR;
+    public static Pair<SupplierBlockWrapper, SupplierItemWrapper> WARPED_PLANKS_SMALL_STAIR;
+    public static Pair<SupplierBlockWrapper, SupplierItemWrapper> COBBLESTONE_SMALL_STAIR;
+    public static Pair<SupplierBlockWrapper, SupplierItemWrapper> SANDSTONE_SMALL_STAIR;
+    public static Pair<SupplierBlockWrapper, SupplierItemWrapper> RED_SANDSTONE_SMALL_STAIR;
+    public static Pair<SupplierBlockWrapper, SupplierItemWrapper> BRICKS_SMALL_STAIR;
+    public static Pair<SupplierBlockWrapper, SupplierItemWrapper> STONE_BRICKS_SMALL_STAIR;
+    public static Pair<SupplierBlockWrapper, SupplierItemWrapper> NETHER_BRICKS_SMALL_STAIR;
+    public static Pair<SupplierBlockWrapper, SupplierItemWrapper> RED_NETHER_BRICKS_SMALL_STAIR;
+    public static Pair<SupplierBlockWrapper, SupplierItemWrapper> STONE_SMALL_STAIR;
+    public static Pair<SupplierBlockWrapper, SupplierItemWrapper> RED_WOOL_SMALL_STAIR;
+    public static Pair<SupplierBlockWrapper, SupplierItemWrapper> YELLOW_WOOL_SMALL_STAIR;
+    public static Pair<SupplierBlockWrapper, SupplierItemWrapper> QUARTZ_BLOCK_SMALL_STAIR;
+    public static Pair<SupplierBlockWrapper, SupplierItemWrapper> PURPUR_BLOCK_SMALL_STAIR;
 
-        Direction facing = state.get(CompatStairsBlock.FACING);
-        BlockHalf half = state.get(CompatStairsBlock.HALF);
-        StairShape stairShape = state.get(CompatStairsBlock.SHAPE);
+    public static void init() {
+        OAK_PLANKS_SMALL_STAIR = new SmallStairDefines(registry, _id("small_stairs_planks_oak"), OAK_PLANKS).create();
+        SPRUCE_PLANKS_SMALL_STAIR = new SmallStairDefines(registry, _id("small_stairs_planks_spruce"), SPRUCE_PLANKS).create();
+        BIRCH_PLANKS_SMALL_STAIR = new SmallStairDefines(registry, _id("small_stairs_planks_birch"), BIRCH_PLANKS).create();
+        JUNGLE_PLANKS_SMALL_STAIR = new SmallStairDefines(registry, _id("small_stairs_planks_jungle"), JUNGLE_PLANKS).create();
+        ACACIA_PLANKS_SMALL_STAIR = new SmallStairDefines(registry, _id("small_stairs_planks_acacia"), ACACIA_PLANKS).create();
+        DARK_OAK_PLANKS_SMALL_STAIR = new SmallStairDefines(registry, _id("small_stairs_planks_dark_oak"), DARK_OAK_PLANKS).create();
 
-        return VoxelShape.of(getShape(stairShape, facing, half));
-    });
+        if (BlockUtil.isExist(CompatIdentifier.of("minecraft", "mangrove_planks"))) {
+            MANGROVE_PLANKS_SMALL_STAIR = new SmallStairDefines(registry, _id("small_stairs_planks_mangrove"), BlockWrapper.of("mangrove_planks")).create();
+        }
 
-    public static Block OAK_PLANKS_SMALL_STAIR = new SmallStairDefines(MCBlocks.OAK_PLANKS, CompatibleBlockSettings.copy(_id("small_stairs_planks_oak"), OAK_PLANKS));
-    public static Block SPRUCE_PLANKS_SMALL_STAIR = new SmallStairDefines(SPRUCE_PLANKS, CompatibleBlockSettings.copy(_id("small_stairs_planks_spruce"), SPRUCE_PLANKS));
-    public static Block BIRCH_PLANKS_SMALL_STAIR = new SmallStairDefines(BIRCH_PLANKS, CompatibleBlockSettings.copy(_id("small_stairs_planks_birch"), BIRCH_PLANKS));
-    public static Block JUNGLE_PLANKS_SMALL_STAIR = new SmallStairDefines(JUNGLE_PLANKS, CompatibleBlockSettings.copy(_id("small_stairs_planks_jungle"), JUNGLE_PLANKS));
-    public static Block ACACIA_PLANKS_SMALL_STAIR = new SmallStairDefines(ACACIA_PLANKS, CompatibleBlockSettings.copy(_id("small_stairs_planks_acacia"), ACACIA_PLANKS));
-    public static Block DARK_OAK_PLANKS_SMALL_STAIR = new SmallStairDefines(DARK_OAK_PLANKS, CompatibleBlockSettings.copy(_id("small_stairs_planks_dark_oak"), DARK_OAK_PLANKS));
-    public static Block CRIMSON_PLANKS_SMALL_STAIR = new SmallStairDefines(CRIMSON_PLANKS, CompatibleBlockSettings.copy(_id("small_stairs_planks_crimson"), CRIMSON_PLANKS));
-    public static Block WARPED_PLANKS_SMALL_STAIR = new SmallStairDefines(WARPED_PLANKS, CompatibleBlockSettings.copy(_id("small_stairs_planks_warped"), WARPED_PLANKS));
-    public static Block COBBLESTONE_SMALL_STAIR = new SmallStairDefines(COBBLESTONE, CompatibleBlockSettings.copy(_id("small_stairs_cobblestone"), COBBLESTONE));
-    public static Block SANDSTONE_SMALL_STAIR = new SmallStairDefines(SANDSTONE, CompatibleBlockSettings.copy(_id("small_stairs_sandstone"), SANDSTONE));
-    public static Block RED_SANDSTONE_SMALL_STAIR = new SmallStairDefines(RED_SANDSTONE, CompatibleBlockSettings.copy(_id("small_stairs_red_sandstone"), RED_SANDSTONE));
-    public static Block BRICKS_SMALL_STAIR = new SmallStairDefines(BRICKS, CompatibleBlockSettings.copy(_id("small_stairs_brick"), BRICKS));
-    public static Block STONE_BRICKS_SMALL_STAIR = new SmallStairDefines(STONE_BRICKS, CompatibleBlockSettings.copy(_id("small_stairs_stonebrick"), STONE_BRICKS));
-    public static Block NETHER_BRICKS_SMALL_STAIR = new SmallStairDefines(NETHER_BRICKS, CompatibleBlockSettings.copy(_id("small_stairs_nether_brick"), NETHER_BRICKS));
-    public static Block RED_NETHER_BRICKS_SMALL_STAIR = new SmallStairDefines(RED_NETHER_BRICKS, CompatibleBlockSettings.copy(_id("small_stairs_red_nether_brick"), RED_NETHER_BRICKS));
-    public static Block STONE_SMALL_STAIR = new SmallStairDefines(STONE, CompatibleBlockSettings.copy(_id("small_stairs_stone"), STONE));
-    public static Block RED_WOOL_SMALL_STAIR = new SmallStairDefines(RED_WOOL, CompatibleBlockSettings.copy(_id("small_stairs_red_wool"), RED_WOOL));
-    public static Block YELLOW_WOOL_SMALL_STAIR = new SmallStairDefines(YELLOW_WOOL, CompatibleBlockSettings.copy(_id("small_stairs_yellow_wool"), YELLOW_WOOL));
-    public static Block QUARTZ_BLOCK_SMALL_STAIR = new SmallStairDefines(QUARTZ_BLOCK, CompatibleBlockSettings.copy(_id("small_stairs_quartz_block"), QUARTZ_BLOCK));
-    public static Block PURPUR_BLOCK_SMALL_STAIR = new SmallStairDefines(PURPUR_BLOCK, CompatibleBlockSettings.copy(_id("small_stairs_purpur_block"), PURPUR_BLOCK));
+        CRIMSON_PLANKS_SMALL_STAIR = new SmallStairDefines(registry, _id("small_stairs_planks_crimson"), CRIMSON_PLANKS).create();
+        WARPED_PLANKS_SMALL_STAIR = new SmallStairDefines(registry, _id("small_stairs_planks_warped"), WARPED_PLANKS).create();
+        COBBLESTONE_SMALL_STAIR = new SmallStairDefines(registry, _id("small_stairs_cobblestone"), COBBLESTONE).create();
+        SANDSTONE_SMALL_STAIR = new SmallStairDefines(registry, _id("small_stairs_sandstone"), SANDSTONE).create();
+        RED_SANDSTONE_SMALL_STAIR = new SmallStairDefines(registry, _id("small_stairs_red_sandstone"), RED_SANDSTONE).create();
+        BRICKS_SMALL_STAIR = new SmallStairDefines(registry, _id("small_stairs_brick"), BRICKS).create();
+        STONE_BRICKS_SMALL_STAIR = new SmallStairDefines(registry, _id("small_stairs_stonebrick"), STONE_BRICKS).create();
+        NETHER_BRICKS_SMALL_STAIR = new SmallStairDefines(registry, _id("small_stairs_nether_brick"), NETHER_BRICKS).create();
+        RED_NETHER_BRICKS_SMALL_STAIR = new SmallStairDefines(registry, _id("small_stairs_red_nether_brick"), RED_NETHER_BRICKS).create();
+        STONE_SMALL_STAIR = new SmallStairDefines(registry, _id("small_stairs_stone"), STONE).create();
+        RED_WOOL_SMALL_STAIR = new SmallStairDefines(registry, _id("small_stairs_red_wool"), RED_WOOL).create();
+        YELLOW_WOOL_SMALL_STAIR = new SmallStairDefines(registry, _id("small_stairs_yellow_wool"), YELLOW_WOOL).create();
+        QUARTZ_BLOCK_SMALL_STAIR = new SmallStairDefines(registry, _id("small_stairs_quartz_block"), QUARTZ_BLOCK).create();
+        PURPUR_BLOCK_SMALL_STAIR = new SmallStairDefines(registry, _id("small_stairs_purpur_block"), PURPUR_BLOCK).create();
+    }
 }
