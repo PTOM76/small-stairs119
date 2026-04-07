@@ -68,6 +68,6 @@ side = "BOTH"
 [[dependencies.smallstairs]]
 modId = "mcpitanlib"
 mandatory = true
-versionRange = "[0,)"
+versionRange = "[3.6.2,)"
 ordering = "NONE"
 side = "BOTH"

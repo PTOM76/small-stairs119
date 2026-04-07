@@ -1,13 +1,13 @@
 package net.pitan76.smallstairs;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.enums.BlockHalf;
-import net.minecraft.block.enums.StairShape;
 import net.minecraft.util.shape.VoxelShape;
 import net.pitan76.mcpitanlib.api.block.v2.CompatStairsBlock;
 import net.pitan76.mcpitanlib.api.block.args.v2.OutlineShapeEvent;
 import net.pitan76.mcpitanlib.api.block.v2.CompatibleBlockSettings;
 import net.pitan76.mcpitanlib.api.util.VoxelShapeUtil;
+import net.pitan76.mcpitanlib.api.util.block.properties.CompatBlockHalf;
+import net.pitan76.mcpitanlib.api.util.block.properties.CompatStairShape;
 import net.pitan76.mcpitanlib.core.serialization.CompatMapCodec;
 import net.pitan76.mcpitanlib.core.serialization.codecs.CompatBlockMapCodecUtil;
 import net.pitan76.mcpitanlib.midohra.block.BlockState;
@@ -47,107 +47,107 @@ public class SmallStairBlock extends CompatStairsBlock {
         BlockState state = e.state;
 
         Direction facing = state.get(FACING);
-        BlockHalf half = state.get(HALF);
-        StairShape stairShape = state.get(SHAPE);
+        CompatBlockHalf half = state.get(COMPAT_HALF);
+        CompatStairShape stairShape = state.get(COMPAT_SHAPE);
 
         return getShape(stairShape, facing, half);
     }
 
-    public static VoxelShape getShape(StairShape stairShape, Direction facing, BlockHalf half) {
+    public static VoxelShape getShape(CompatStairShape stairShape, Direction facing, CompatBlockHalf half) {
         VoxelShape voxelShape = VoxelShapeUtil.cuboid(0, 0, 0, 1, 1, 1);
 
-        double sy1 = half == BlockHalf.BOTTOM ? 0 : base2;
-        double ey1 = half == BlockHalf.BOTTOM ? base1 : 1;
+        double sy1 = half.equals(CompatBlockHalf.BOTTOM) ? 0 : base2;
+        double ey1 = half.equals(CompatBlockHalf.BOTTOM) ? base1 : 1;
         double sy2 = base1;
         double ey2 = base2;
 
-        if (facing == Direction.NORTH) {
-            if (stairShape == StairShape.STRAIGHT) {
+        if (facing.equals(Direction.NORTH)) {
+            if (stairShape.equals(CompatStairShape.STRAIGHT)) {
                 voxelShape = VoxelShapeUtil.cuboid(0, sy1, 0, 1, ey1, base2);
                 voxelShape = VoxelShapeUtil.union(voxelShape, VoxelShapeUtil.cuboid(0, sy2, 0, 1, ey2, base1));
             }
-            if (stairShape == StairShape.OUTER_RIGHT) {
+            if (stairShape.equals(CompatStairShape.OUTER_RIGHT)) {
                 voxelShape = VoxelShapeUtil.cuboid(base1, sy1, 0, 1, ey1, base2);
                 voxelShape = VoxelShapeUtil.union(voxelShape, VoxelShapeUtil.cuboid(base2, sy2, 0, 1, ey2, base1));
             }
-            if (stairShape == StairShape.INNER_RIGHT) {
+            if (stairShape.equals(CompatStairShape.INNER_RIGHT)) {
                 voxelShape = VoxelShapeUtil.union(VoxelShapeUtil.cuboid(0, sy1, 0, 1, ey1, base2), VoxelShapeUtil.cuboid(base1, sy1, 0, 1, ey1, 1));
                 voxelShape = VoxelShapeUtil.union(voxelShape, VoxelShapeUtil.cuboid(0, sy2, 0, 1, ey2, base1), VoxelShapeUtil.cuboid(base2, sy2, 0, 1, ey2, 1));
             }
 
-            if (stairShape == StairShape.OUTER_LEFT) {
+            if (stairShape.equals(CompatStairShape.OUTER_LEFT)) {
                 voxelShape = VoxelShapeUtil.cuboid(0, sy1, 0, base2, ey1, base2);
                 voxelShape = VoxelShapeUtil.union(voxelShape, VoxelShapeUtil.cuboid(0, sy2, 0, base1, ey2, base1));
             }
-            if (stairShape == StairShape.INNER_LEFT) {
+            if (stairShape.equals(CompatStairShape.INNER_LEFT)) {
                 voxelShape = VoxelShapeUtil.union(VoxelShapeUtil.cuboid(0, sy1, 0, 1, ey1, base2), VoxelShapeUtil.cuboid(0, sy1, 0, base2, ey1, 1));
                 voxelShape = VoxelShapeUtil.union(voxelShape, VoxelShapeUtil.cuboid(0, sy2, 0, 1, ey2, base1), VoxelShapeUtil.cuboid(0, sy2, 0, base1, ey2, 1));
             }
         }
-        if (facing == Direction.SOUTH) {
-            if (stairShape == StairShape.STRAIGHT) {
+        if (facing.equals(Direction.SOUTH)) {
+            if (stairShape.equals(CompatStairShape.STRAIGHT)) {
                 voxelShape = VoxelShapeUtil.cuboid(0, sy1, base1, 1, ey1, 1);
                 voxelShape = VoxelShapeUtil.union(voxelShape, VoxelShapeUtil.cuboid(0, sy2, base2, 1, ey2, 1));
             }
-            if (stairShape == StairShape.OUTER_RIGHT) {
+            if (stairShape.equals(CompatStairShape.OUTER_RIGHT)) {
                 voxelShape = VoxelShapeUtil.cuboid(0, sy1, base1, base2, ey1, 1);
                 voxelShape = VoxelShapeUtil.union(voxelShape, VoxelShapeUtil.cuboid(0, sy2, base2, base1, ey2, 1));
             }
-            if (stairShape == StairShape.INNER_RIGHT) {
+            if (stairShape.equals(CompatStairShape.INNER_RIGHT)) {
                 voxelShape = VoxelShapeUtil.union(VoxelShapeUtil.cuboid(0, sy1, 0, base2, ey1, 1), VoxelShapeUtil.cuboid(0, sy1, base1, 1, ey1, 1));
                 voxelShape = VoxelShapeUtil.union(voxelShape, VoxelShapeUtil.cuboid(0, sy2, 0, base1, ey2, 1), VoxelShapeUtil.cuboid(0, sy2, base2, 1, ey2, 1));
             }
 
-            if (stairShape == StairShape.OUTER_LEFT) {
+            if (stairShape.equals(CompatStairShape.OUTER_LEFT)) {
                 voxelShape = VoxelShapeUtil.cuboid(base1, sy1, base1, 1, ey1, 1);
                 voxelShape = VoxelShapeUtil.union(voxelShape, VoxelShapeUtil.cuboid(base2, sy2, base2, 1, ey2, 1));
             }
-            if (stairShape == StairShape.INNER_LEFT) {
+            if (stairShape.equals(CompatStairShape.INNER_LEFT)) {
                 voxelShape = VoxelShapeUtil.union(VoxelShapeUtil.cuboid(base1, sy1, 0, 1, ey1, 1), VoxelShapeUtil.cuboid(0, sy1, base1, base1, ey1, 1));
                 voxelShape = VoxelShapeUtil.union(voxelShape, VoxelShapeUtil.cuboid(base2, sy2, 0, 1, ey2, 1), VoxelShapeUtil.cuboid(0, sy2, base2, base2, ey2, 1));
             }
         }
-        if (facing == Direction.EAST) {
-            if (stairShape == StairShape.STRAIGHT) {
+        if (facing.equals(Direction.EAST)) {
+            if (stairShape.equals(CompatStairShape.STRAIGHT)) {
                 voxelShape = VoxelShapeUtil.cuboid(base1, sy1, 0, 1, ey1, 1);
                 voxelShape = VoxelShapeUtil.union(voxelShape, VoxelShapeUtil.cuboid(base2, sy2, 0, 1, ey2, 1));
             }
-            if (stairShape == StairShape.OUTER_RIGHT) {
+            if (stairShape.equals(CompatStairShape.OUTER_RIGHT)) {
                 voxelShape = VoxelShapeUtil.cuboid(base1, sy1, base1, 1, ey1, 1);
                 voxelShape = VoxelShapeUtil.union(voxelShape, VoxelShapeUtil.cuboid(base2, sy2, base2, 1, ey2, 1));
             }
-            if (stairShape == StairShape.INNER_RIGHT) {
+            if (stairShape.equals(CompatStairShape.INNER_RIGHT)) {
                 voxelShape = VoxelShapeUtil.union(VoxelShapeUtil.cuboid(base1, sy1, 0, 1, ey1, 1), VoxelShapeUtil.cuboid(0, sy1, base1, base1, ey1, 1));
                 voxelShape = VoxelShapeUtil.union(voxelShape, VoxelShapeUtil.cuboid(base2, sy2, 0, 1, ey2, 1), VoxelShapeUtil.cuboid(0, sy2, base2, base2, ey2, 1));
             }
 
-            if (stairShape == StairShape.OUTER_LEFT) {
+            if (stairShape.equals(CompatStairShape.OUTER_LEFT)) {
                 voxelShape = VoxelShapeUtil.cuboid(base1, sy1, 0, 1, ey1, base2);
                 voxelShape = VoxelShapeUtil.union(voxelShape, VoxelShapeUtil.cuboid(base2, sy2, 0, 1, ey2, base1));
             }
-            if (stairShape == StairShape.INNER_LEFT) {
+            if (stairShape.equals(CompatStairShape.INNER_LEFT)) {
                 voxelShape = VoxelShapeUtil.union(VoxelShapeUtil.cuboid(0, sy1, 0, 1, ey1, base2), VoxelShapeUtil.cuboid(base1, sy1, 0, 1, ey1, 1));
                 voxelShape = VoxelShapeUtil.union(voxelShape, VoxelShapeUtil.cuboid(0, sy2, 0, 1, ey2, base1), VoxelShapeUtil.cuboid(base2, sy2, 0, 1, ey2, 1));
             }
         }
-        if (facing == Direction.WEST) {
-            if (stairShape == StairShape.STRAIGHT) {
+        if (facing.equals(Direction.WEST)) {
+            if (stairShape.equals(CompatStairShape.STRAIGHT)) {
                 voxelShape = VoxelShapeUtil.cuboid(0, sy1, 0, base2, ey1, 1);
                 voxelShape = VoxelShapeUtil.union(voxelShape, VoxelShapeUtil.cuboid(0, sy2, 0, base1, ey2, 1));
             }
-            if (stairShape == StairShape.OUTER_RIGHT) {
+            if (stairShape.equals(CompatStairShape.OUTER_RIGHT)) {
                 voxelShape = VoxelShapeUtil.cuboid(0, sy1, 0, base2, ey1, base2);
                 voxelShape = VoxelShapeUtil.union(voxelShape, VoxelShapeUtil.cuboid(0, sy2, 0, base1, ey2, base1));
             }
-            if (stairShape == StairShape.INNER_RIGHT) {
+            if (stairShape.equals(CompatStairShape.INNER_RIGHT)) {
                 voxelShape = VoxelShapeUtil.union(VoxelShapeUtil.cuboid(0, sy1, 0, 1, ey1, base2), VoxelShapeUtil.cuboid(0, sy1, 0, base2, ey1, 1));
                 voxelShape = VoxelShapeUtil.union(voxelShape, VoxelShapeUtil.cuboid(0, sy2, 0, 1, ey2, base1), VoxelShapeUtil.cuboid(0, sy2, 0, base1, ey2, 1));
             }
-            if (stairShape == StairShape.OUTER_LEFT) {
+            if (stairShape.equals(CompatStairShape.OUTER_LEFT)) {
                 voxelShape = VoxelShapeUtil.cuboid(0, sy1, base1, base2, ey1, 1);
                 voxelShape = VoxelShapeUtil.union(voxelShape, VoxelShapeUtil.cuboid(0, sy2, base2, base1, ey2, 1));
             }
-            if (stairShape == StairShape.INNER_LEFT) {
+            if (stairShape.equals(CompatStairShape.INNER_LEFT)) {
                 voxelShape = VoxelShapeUtil.union(VoxelShapeUtil.cuboid(0, sy1, 0, base2, ey1, 1), VoxelShapeUtil.cuboid(0, sy1, base1, 1, ey1, 1));
                 voxelShape = VoxelShapeUtil.union(voxelShape, VoxelShapeUtil.cuboid(0, sy2, 0, base1, ey2, 1), VoxelShapeUtil.cuboid(0, sy2, base2, 1, ey2, 1));
             }
