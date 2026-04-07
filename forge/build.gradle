@@ -67,13 +67,34 @@ components.java {
 publishing {
     publications {
         mavenForge(MavenPublication) {
-            artifactId = rootProject.archives_base_name + "-" + project.name
+            artifactId = project.archives_base_name + "-forge"
+            version = project.mod_version + "-SNAPSHOT"
             from components.java
+
+            pom.withXml {
+                def pomNode = asNode()
+                pomNode.dependencies.'*'.findAll {
+                    def groupId = it.groupId.text()
+                    def artifactId = it.artifactId.text()
+
+                    (groupId == 'net.pitan76' && artifactId.startsWith('mcpitanlib-'))
+                }.each() {
+                    it.parent().remove(it)
+                    print("Removed dependency: ${it.groupId.text()}:${it.artifactId.text()}\n")
+                }
+            }
         }
     }
 
     // See https://docs.gradle.org/current/userguide/publishing_maven.html for information on how to set up publishing.
     repositories {
-        // Add repositories to publish to here.
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/PTOM76/maven")
+            credentials {
+                username = project.findProperty("gpr.user") ?: System.getenv("GITHUB_ACTOR")
+                password = project.findProperty("gpr.key") ?: System.getenv("GITHUB_TOKEN")
+            }
+        }
     }
 }
