@@ -51,7 +51,7 @@ public class SmallStairs extends CommonModInitializer {
             RegistryResult<Block> MANGROVE_PLANKS = registry.registerBlock(_id("small_stairs_planks_mangrove"), () -> net.pitan76.smallstairs.v119.Blocks.MANGROVE_PLANKS_SMALL_STAIR);
             registry.registerItem(_id("small_stairs_planks_mangrove"), () -> ItemUtil.create(MANGROVE_PLANKS.getOrNull(), CompatibleItemSettings.of(_id("small_stairs_planks_mangrove")).addGroup(ItemGroups.BUILDING_BLOCKS)));
         } else {
-            RegistryResult<Block> MANGROVE_PLANKS = registry.registerBlock(_id("small_stairs_planks_mangrove"), () -> new SmallStairBlock(Blocks.STONE_SMALL_STAIR, CompatibleBlockSettings.copy(_id("small_stairs_planks_mangrove"), Blocks.STONE_SMALL_STAIR)));
+            RegistryResult<Block> MANGROVE_PLANKS = registry.registerBlock(_id("small_stairs_planks_mangrove"), () -> new SmallStairDefines(Blocks.STONE_SMALL_STAIR, CompatibleBlockSettings.copy(_id("small_stairs_planks_mangrove"), Blocks.STONE_SMALL_STAIR)));
             registry.registerItem(_id("small_stairs_planks_mangrove"), () -> ItemUtil.create(MANGROVE_PLANKS.getOrNull(), CompatibleItemSettings.of(_id("small_stairs_planks_mangrove"))) );
         }
 

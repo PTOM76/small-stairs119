@@ -1,56 +1,24 @@
 package net.pitan76.smallstairs;
 
-import net.minecraft.block.Block;
 import net.minecraft.block.enums.BlockHalf;
 import net.minecraft.block.enums.StairShape;
 import net.minecraft.util.shape.VoxelShape;
-import net.pitan76.mcpitanlib.api.block.v2.CompatStairsBlock;
-import net.pitan76.mcpitanlib.api.block.args.v2.OutlineShapeEvent;
-import net.pitan76.mcpitanlib.api.block.v2.CompatibleBlockSettings;
+import net.pitan76.mcpitanlib.api.item.v2.CompatibleItemSettings;
 import net.pitan76.mcpitanlib.api.util.VoxelShapeUtil;
-import net.pitan76.mcpitanlib.core.serialization.CompatMapCodec;
-import net.pitan76.mcpitanlib.core.serialization.codecs.CompatBlockMapCodecUtil;
-import net.pitan76.mcpitanlib.midohra.block.BlockState;
 import net.pitan76.mcpitanlib.midohra.block.BlockWrapper;
 import net.pitan76.mcpitanlib.midohra.util.math.Direction;
 
-public class SmallStairBlock extends CompatStairsBlock {
-
-    public static final CompatMapCodec<SmallStairBlock> CODEC = CompatBlockMapCodecUtil.createCodecOfStairsBlock(SmallStairBlock::new);
-
-    public SmallStairBlock(net.minecraft.block.BlockState baseBlockState, CompatibleBlockSettings settings) {
-        super(baseBlockState, settings);
-    }
-
-    public SmallStairBlock(BlockState baseBlockState, CompatibleBlockSettings settings) {
-        super(baseBlockState, settings);
-    }
-
-    public SmallStairBlock(Block block, CompatibleBlockSettings settings) {
-        this(BlockState.of(block), settings);
-    }
-
-    public SmallStairBlock(BlockWrapper block, CompatibleBlockSettings settings) {
-        this(block.getDefaultState(), settings);
-    }
-
-    @Override
-    public CompatMapCodec<? extends CompatStairsBlock> getCompatCodec() {
-        return CODEC;
-    }
+public class SmallStairDefines {
 
     private static final double base1 = 1.0 / 3.0;
     private static final double base2 = 2.0 / 3.0;
 
-    @Override
-    public VoxelShape getOutlineShape(OutlineShapeEvent e) {
-        BlockState state = e.state;
+    private final BlockWrapper block;
+    private final CompatibleItemSettings settings;
 
-        Direction facing = state.get(FACING);
-        BlockHalf half = state.get(HALF);
-        StairShape stairShape = state.get(SHAPE);
-
-        return getShape(stairShape, facing, half);
+    public SmallStairDefines(BlockWrapper block, CompatibleItemSettings settings) {
+        this.block = block;
+        this.settings = settings;
     }
 
     public static VoxelShape getShape(StairShape stairShape, Direction facing, BlockHalf half) {
